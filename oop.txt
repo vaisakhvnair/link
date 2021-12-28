@@ -1,0 +1,3416 @@
+JAVA:
+=====
+
+  what is java?
+
+  Object oriented Programming language and Platform independent language,
+  java was developed by james gosling in 1995.
+
+  jdk--1.7 java is object oriented programming lanaguage.
+
+  
+  What is latest version of version?
+ 
+   jdk 1.8 --object oriented and Functional programming language
+            (lambda expressions,streams,jondi api).
+
+   jdk -1.9 -- Object oriented and Functional Programming langauge.
+
+           --Additional funtionality is called JS shell
+
+
+   to check which version of java is installed in system:
+ =---------------------------------------------------------
+
+  cmd-> javac -version --jdk -- system independent -- tocompile
+
+  cmd-> java -version  --jre -- system dependent -- to run
+
+
+   write a simple java program to print welcome message:
+  ==========================================================
+
+  syntax:
+  =======
+
+   class <classname>
+
+   {
+
+    public static void main(String args[]){
+
+    //statements;
+
+
+
+   }
+
+   }
+  
+  steps:
+  ======
+
+ 1) create a file and the save the file with .java Extension
+
+ 2) write a java code inside the file.java
+
+ 3)to compile a java program
+
+  syntax:
+ -======
+ javac Filename.java
+
+ 4) to run the java program
+
+ syntax:
+  ======
+ java Filename
+ex1:
+=====
+
+ public class Ex1{
+
+  public static void main(String args[]){
+
+  System.out.print("welcome the java"); 
+
+ }
+
+ }
+
+
+note:
+======
+
+1)If we are creating any class with out any access modifier then
+by default the class will have default acces modifier.
+
+2) if class contain Default access modifier then the class name
+   and Saved filename.java Need not be same.
+
+3) if class contain public access modifier then, the class name
+    and saved filename.java should be same.
+
+4)  A class can contain default,public access modifiers.
+
+5) Inner class can contain private,protected,static..access modifiers.
+
+
+
+ comments:
+ =========
+
+   1)single line comments
+   =======================
+
+   syntax:
+  =======
+
+   // comments
+
+
+   2)multiple line comments:
+    ==========================
+
+    syntax:
+      ========
+
+    /*
+
+    statements
+
+     */
+ 
+
+   
+
+
+
+
+
+API:
+====
+
+APPLICATION PROGRMMAMING INTERFACE.
+
+API IS TEXT DOC OR PDF WHICH CONTAIN PACKAGES ,SUBPACKAGES,
+ALONG WITH INTERFACES AND CLASSES.
+
+
+1)J2SE --API  -- STANDALONE APPLICATION ---JDK
+
+2)J2EE ---API  -- SERVLETS,JSP,eJB -- TO DEVELOP WEB APPLICATION.
+
+3)JDBC ---API --  THROUGH JAVAPROGRAM TO CONNECT THE DATABASE
+                    AND PERFROM SQL OPERATONS.
+                   (HIBERATE,IBATES--FRAMWORK)
+
+4)JME -- API ---  TO DEVELOP micro or MOBILE APPLICATION.
+
+
+
+API:
+====
+ API IS SPEcficiATIONs OR RULES OR GUIDELINES TO 
+   DEVELOP A JAVA PROGRAM.
+
+  SUN MICRO-SYSTEM PROVIDED  THE IMPLEMENTATION FOR J2SE API
+   AND GIVEN IN THE FORM OF SOFTWARE CALLED JDK.
+
+
+J2EE API:
+=========
+
+SERVER VENDORS ARE RESPONSIBLE TO PROVIDE IMPLEMENTAION FOR 
+J2EE API AND GIVEN THE SOFTWARE INTHE FORM OF .jar
+
+SERVERS:
+========
+
+TOMCAT --- servlet-api.jar,jsp-api.jar
+
+TOMCAT/LIB/.jars
+
+
+JDBC API:
+==========
+DATABASE  VENDORS ARE RESPONSIBLE TO PROVIDE THE IMPLEMENTATION
+FOR JDBC API AND GIVEN THE SOFTWARE IN THE FORM .jar
+
+EX:
+===
+
+ORACLE -- ojdbc.jar,ojdbc14.jar
+
+MYSQL --- mysql-connector-bin-version.jar
+
+
+
+
+  JAVANAMING CONVENTIONS:
+  ==========================
+
+  1)CLASSNAME:
+  =============
+  Class name is a noun  and  the classname should start with Capital Letter and secondWord also
+  followed by Capital.
+
+  Ex:
+  ===
+  class  StudentRegistration{
+
+
+  }
+
+ 2) methodName:
+ =============
+  method name is verb   and the method name should startwith small letterand next word
+  start with capital Letter(camelCase)
+
+
+  Ex:
+  ===
+  class Employee{
+
+   void getEmployeeDetails(){
+
+    //statements
+   }
+
+   }
+
+  3) variableName:
+  ==============
+   variableName is also camelCase
+
+
+  Datatypes:
+  ==========
+  java  contain eight primitive datatypes
+
+   Integer Datatypes:
+  ================
+   1)byte -size is 1 byte(8bits)  --range -128to 127 -default value-0
+
+   2)short -size is 2 bytes --range -32768 to 32767 --default value -0
+
+   3)int - size is 4 bytes -- range -2147483648 to 21747483647 
+                                --default-value 0
+                                                           
+   4)long -- size is 8 bytes --default value is 0
+
+    Floating point Datatypes:
+   ---------------------------------------
+
+   5)float -- to store the decimal point values(5 to 6 --scale)
+
+      --size 4 bytes ---default value-- 0.0 
+     ex:-- float a=10.12345 --10 is precision nd 123---scale
+
+
+    6)double :--to store the decimal point values(15 to 16 --scale)
+         --size 8 bytes --default value-- 0.0
+
+    7)char:-- to store characters values.
+   
+    --size is 2 bytes --default value- '\u0000'
+
+   8) boolean :- to store logical values(true nd false) --size is 1 bit
+
+         --default value is -- false.
+
+ Note:
+ =====
+ ==> f  or  l is a literals to store float and Long values into a variables
+
+     By default compile will treat as int  we need to specify compiler has to 
+     read as long by specifying 
+     literal l or L
+ 
+     long a=10L;
+
+
+     float b = 20.0f;
+
+
+   Object Referenced Datatypes:
+   =============================
+
+     1)String --is class available in java.lang Package  
+
+   note:
+  =====
+   Any predefined class will act as Referenced types.
+   Default value for the Referenced Types is = null
+
+  ex:
+  ===
+    String s;
+
+
+  variables :
+  ==========
+
+  1)variable is used to store the value temporarily.
+
+    syntax:
+    ========
+    accessmodifier datatype  variablename ;
+    default
+    private
+    protected
+    public    
+
+
+    In java the varibales are
+
+    1)instance variable --
+     =================
+
+     a)memory is allocated at Heap area of JVM 
+
+     b)For every object their is a separate copy of instance of variables
+      available(memory)-- at run time
+
+    c)we can declare the instance variable inside the class
+      before or outside  the methods.
+
+    ex:
+   ====
+    public class Ex1{
+
+      int b; --declaration
+        int a=10; --declarattion and initialization
+         int a,b;
+         int a=10,b=30,c;
+     //methods
+       public static void main(String args[]){
+    }
+  }
+
+
+    2)static variable-- 
+  =================
+
+   a)For static variables the memory is allocated method area of JVM
+
+   b)the memory is allocated at once
+
+    c)we can declare the variable inside the class  before the method
+   using static keyword.
+  
+   d)instance variable cannot be used directly inside the static
+     context(static block,static method) and if we want to access
+     the  instance variables inside static context using object.
+
+   ex:
+   ===
+   public class Ex2{
+
+     static int a=10;
+    //methods  
+ 
+   }                     
+
+
+  3)local variable --
+   ==============
+  a)For local variable the memory is allocated
+                   at stack  in JVM
+     
+  b) Local variable is declared inside a method or block.
+   
+  c)scope the local variable with in the method or block ==>{ }.
+
+  d) A local variable which declared must be initialized.
+
+
+  ex:
+  ==== 
+
+    public class Ex3
+   {
+
+    public void methodOne(){
+
+    int a=10; //local variable
+   System.out.println(a)
+
+    }
+     
+     //System.out.println(a)
+    }
+
+
+
+
+
+  ex:
+  ===
+
+   class Employee{
+ 
+     int empId;
+     int empName;
+     int sal;
+
+   }
+
+  
+
+  Example:
+  =======
+
+  write a java program to declare the variables
+  =======================================
+
+  class ExampleOnVariables{
+
+  int  studentNo;
+  String studentName;
+  float  studentMarks;   //instance variables
+
+
+ public static void main(String args[]){
+
+  System.out.println(studentNo);
+  System.out.println(studentName);
+  System.out.println(studentMarks);
+
+ }
+
+
+ }
+
+
+
+ Example2:
+ ========
+  WAP named as ExampleOnVariables1  and declare 
+  three instance variables  of type int and 
+  create a method named as  getSum() ,return type of method is void and perform sum of two numbers
+  and display the sum of two numbers.
+
+
+ sol:
+ ===
+ public class ExampleOnVariables1{
+
+ int num1;
+ int num2;
+ int res;
+
+ public void getSum(){
+
+ res=num1+num2;
+ System.out.println("sum of two numbers is "+res);
+
+ }
+
+ public static void main(String args[]){
+
+  ExampleOnVariables1 env1 = new ExampleOnvariables1();
+  env1.getSum();
+
+ }}
+ }
+
+
+ oops:
+ =====
+
+  1)class
+  2)Object
+  3)Inheritance
+  4)Encapsulation
+  5)Abstraction
+  6)Polymorphism
+
+
+ Class:
+ ======
+
+  A class is Blue print(template) for an Object.
+
+  A class is user defined Datatype.
+
+ syntax:
+ =======
+
+ class classname
+ {
+   //Datamemebers        //to specify object properties 
+   //member methods   // to specify object functionality or actions.
+
+ }
+
+ Object:
+ =======
+
+ An  Object which exists phsically in the real world.
+
+ An object is an instance of a class(initalization of an object)
+
+ An object can contain properties and Actions.
+
+ In java we represent Properties in the form of datamembers(variables)
+
+ In java we represent Actions in the form of member methods.
+
+ to define Object properties and Actions we require class.
+
+ to perfrom any operations in java  we require Class(template).
+
+  example:
+  =======
+  Chair is an Object
+
+  properites of chair:- color,material,shape,wheels..etc
+
+  Actions of chair  --  movieable(),seatAdjustable()
+
+  sol:
+  =====
+
+  class Chair
+ {
+
+  String color="black";
+  String material="plastic";
+
+  int wheels = 4; //properties
+
+  public void movieable(){  //actions
+
+  System.out.println("Chair is moveable");
+
+ }
+
+ }
+
+
+ How to create object for class:
+ ===============================
+
+
+ 1) new operator:
+= ===============
+
+  Using  new operator we can create the Object for a class
+
+  syntax:
+ =======
+
+  classname  referencename = new classname();
+
+  ex:
+  ===
+
+  Chair c = new Chair();
+
+
+  to call the instance data members and instance methods;
+  ========================================================
+
+  syntax:
+  =======
+
+   referencename.variablename  //to call instance variables
+
+   referencename.methodname() // to call instance methods
+
+   ex:
+  ====
+
+  System.out.println(c.color);
+  System.out.println(c.wheels); //to call instance variables
+
+   c.movieable();//to call instance method
+
+
+  to call static datamembers and static methods:
+  ==============================================
+
+  syntax:
+  ========
+
+  classname.variable  --- to call a static variable
+
+  classname.methodname --to call static methods.
+
+
+
+  typeCasting:
+  =========
+  There are  two typecasting
+
+  1) Widening casting or implicit casting:
+  ================================
+
+  converting one datatype of a variable  into other data type.
+
+  note:
+  ====
+  it convert lower datatype to higher datatype
+
+   byte->short->int->long->float->double
+    or
+   char->int->long->float->double
+
+
+  2)Narrowing casting or Explicity casting:
+  ================================
+  Converting higher datatype of a variable into Lower datatype.
+  with help of  type cast() operator .
+
+  syntax:
+  ======
+  (specify the dataype)
+
+
+
+
+  Example :
+  ========
+
+  1) write a java program to convert one datatype into another data type.
+
+  sol:
+  ===
+
+    public class ExampleOnCasting{
+
+    public static void main(String args[]){
+ 
+    int a=10;
+ 
+    double b = a; //widening casting or implicit casting
+
+    System.out.println("the value of a variable is "+b);
+
+
+    double d = 20.0;
+
+    int c = (int)d; //narrowing casting or explicit casting
+
+    System.out.println("the value of a variable is "+c);
+
+    float x =(float) d; //converting double to float
+
+    System.out.println(x);
+
+    long aa = 30;
+
+    float y= aa; //converting long to float 
+
+    System.out.println(y);
+
+  }
+ 
+ }
+
+
+ 
+
+   How to define methods:
+   ======================
+
+     1) instance methods or concrete methods
+
+     --------------------------------------------------------------
+
+    syntax:
+    ========
+
+
+     AccessModifer returntype methodname(if any arguments){
+
+     //to perform certain a task
+
+    }
+      note:
+     ======
+
+     AccessModifer:-(public,protected,private,default)
+      return type :- primitive datatypes or object References
+                     if not primitive or object it must be void(empty).
+
+    ex:
+    ===
+
+     void  methodOne(){
+
+      //any statements
+
+      }
+
+     or
+
+     public  int getAddition(int x,int x){
+  
+    //logic
+    //return type of variable
+    }
+
+    or
+
+    protected float getEmpSalay(int id){
+
+    //logic to get the salary based on id
+     //return;
+    }
+
+
+   static methods:
+   ===============
+
+    A static method is method is declared using a keyword called
+     static.
+
+   syntax:
+   ========
+
+    accessmodifiers static  returntype methodname(if any arguemnts){
+
+     //
+
+     }
+
+  ex:
+  ====
+
+    public static void main(String args[]){
+
+   //logic
+    }
+
+
+    Abstract Method:
+    ================
+
+    A abstract method is a method , it  contains  only method declaration
+    but not definition .
+
+
+    syntax:
+    =======
+
+     public abstract retruntype methodname(if any arguments);
+      ex:
+      public abstract void methodOne();
+
+     note:
+     =====
+     if a class contain atleast one abstract method then compiler will
+     force the user or Developer to declare the class as abstract.
+
+
+   Example:
+   =======
+     1) WAP  named as ExampleOnMethods 
+     a) create a instance method(getEmpSal) which return int type value and
+      perform sum of two numbers by passing values to method.
+
+     b)create a static method named as studentTotalMarks(three parameters of type int)
+      and return the sum of the three parameters
+
+
+   sol:
+    ===
+  public class ExampleOnMethods{
+      
+  public  int getEmpSal(int x,int y){
+      
+        int z=x+y;
+        return z;
+    
+     }
+
+    public static int studentTotalMarks(int m1,int m2, int m3){
+       
+                 int total=m1+m2+m3;
+
+                return total;        
+     }
+     public static void main(String args[]){
+
+        ExampleOnMethods enm =new  ExampleOnMethods();
+   
+                int res   =     enm.getEmpSal(1000,3000);//calling instance method
+               
+        int res1=   ExampleOnMethods.studentTotalMarks(45,60,36); //calling static method
+
+               System.out.println("sum of employee salaries : "+res);
+              System.out.println("sum of marsk of a student : "+res1);
+    } 
+
+}
+
+
+ Operators:
+ =========
+
+ 1)Arithmatic operators:
+ ===================
+ this operators are used to perfrom calculations between two operands.
+
+ +   -- ADDITION
+ -     --SUBSTRACTION
+ *   --MULTIPLICATION
+ /    --DIVISION     --- IT WILL RETRUN QUOTIENT
+
+ %    -- MODULES  ---IT WILL RETURN REMAINDER
+
+
+ 2)Relational operators:
+ ==================
+
+  >    GREATER THAN
+  >=    GREATER THAN OR EQUALS TO
+  <     LESSTHAN
+  <=     LESSTHAN OR EQUALS TO
+  !=     NOT EQUALS TO
+  ==    EQUALS TO 
+
+ 3)Logical operators:
+ ================
+  &&  --- logical and
+  ||      --logical or
+  ^      --logical XOR
+  !     --- logical Not
+
+4)Increment and Decrement operators
+  
+   ++,--,+=,-=,%=
+
+ Example:
+ =======
+
+ 1)WAP  to perform addition,substraction,division,modules.
+  and display sum of numbers,sub of numbers or.......
+
+
+
+
+
+  Conditional operator:
+  =================
+  this operator is used to make Conditional Expressions.
+
+  syntax:
+  ======
+  Datatype variableName =Expression1?Expression2:Expression3;
+
+   if Expression1 condition is matched it will return expression2
+.
+   if Expression 1 condition is not matched it will retrun Express3
+
+
+
+  Ex:
+  ===
+
+  int a=10;
+  int b=20;
+
+  int value1=(a<b)?a:b;
+
+  int value2=(a>b)?a:b;
+
+
+
+
+
+ Conditional Statements:
+ ======================
+  1)if
+  ===
+
+  syntax:
+  =======
+  if(condition){
+  
+  //true statments;
+  }
+
+  note:
+  =====
+  In if condition it contains only one statement braces
+  are optional but this statment should not be initilization statement.
+
+
+
+  Example:
+  =======
+  1)WAp to compare two int variables and print which is greater.
+   using if-else condition.
+
+
+  if-else
+  ======
+    syntax:
+    ======
+    if(condition){
+   
+      //true statments   
+    
+    }else{
+ 
+      //else /false statements
+     }
+
+
+
+
+
+  if-else-if:
+  ===========
+  to check multiple conditions
+
+  syntax:
+  ======
+
+  if(condition1){
+
+  //statements
+  
+   }else if(condition2){
+   //statements
+ 
+   }else{
+       //statements
+   }
+
+  ex:
+   ===
+    WAp to compare three int variables and print which is greater.
+    using if-else-if condition and logical operators (&& or ||).
+
+
+
+  switch-case:
+  ===========
+   to check multiple condition based on expression
+
+    syntax:
+    =======
+    switch(expresssion){
+
+       case  cond1 : statements;
+                       break;
+       case  cond2 : statements;
+                        break;
+        case cond3 : statements;
+                       break;
+        case cond4 : statements;
+                       break; 
+        default : statement;
+    }
+
+    Example 
+    ++++++++
+    wAp to perform arthematic operations using switch case expresssion .
+    
+
+
+   Iterative statments:
+   =====================
+
+   While loop:
+   ===========
+   to repeat the statements until the condition become true.
+
+   syntax:
+   =======
+
+   initialize a variable;
+
+    while(condition)
+    {
+    //statements;
+
+    //increment/decrement
+
+    }
+
+   ex:
+   ==
+  
+   write a program to display multiplication table of 2 using while loop;
+
+
+
+
+
+  sol:
+  ===
+
+   public class ExampleOnWhile{
+
+   public static void main(String args[]){
+
+   int i=1;
+    int n=2;
+
+   while(i<=10){
+
+   System.out.println(n+ " X " +i+" = "+(n*i));
+   i++;    //i=i+1; or //i+=1
+
+   }}
+  }
+
+ 2) WAP to print 1 to 10 integers using while loop.
+
+   sol:
+  ===
+
+   public class ExampleOnIntegers{
+
+   public static void main(String args[]){
+
+   int i=1;
+
+   while(i<=10){
+
+   System.out.println(i);
+  i++
+  }
+
+ }
+ }
+
+ for loop
+ ========
+
+ syntax:
+ =======
+
+  for(initilization;condition;increment/decrement){
+
+  //statements
+
+  }
+
+  ex:
+  ===
+  WAP to print 1 to 10 integers
+  WAP to display multiplication table of 5 using for loop;
+
+ sol:
+ ====
+ public class ExampleOnFor{
+ public static void main(String args[]){
+
+ int n=5;
+
+ for(int i=1;i<=10;i++){
+
+ System.out.println(n+" X "+i+" = "+(n*i));
+
+ }
+  }
+ }
+
+
+  do-while loop
+  =============
+  syntax:
+   =======
+	initilization variable;
+   do{
+
+   //statements;
+   //increment/decrement
+
+    }while(condition);
+
+  note:
+  =====
+  the statements will execute atleast one time before checking the condition.
+
+
+
+ Example:
+ =======
+  write a java program to print 1 to 10 integers using do-while loop.
+  WAP to print multiplication table of 4
+
+
+ 
+
+sol:
+   ===
+  public class ExampleOndoWhile{
+
+  public static void main(String args[]){
+
+     int i=1;
+   do{
+        System.out.println(i);
+     i++;
+    }while(i<=10);
+  }
+  
+
+Assigment:
+==========
+ 1)WAP to check given number is prime number or not.
+ 2)WAP to check given year is a leap year or not
+ 3)WAP to fibnoic series from 1 to 10
+
+ 
+
+ for -foreach loop ---from jdk 1.5 
+ ===================================
+
+ In JDK 1.5 introduced a new for loop known as 
+ foreach loop or enhanced for loop, 
+ which enables you to traverse the complete array or collection object sequentially 
+ without using an index variable.
+
+  syntax:
+  ========
+
+  for(type of array/collection variableName : Object of array/collection){
+
+ //statements;
+
+  }
+
+
+
+
+
+ switch statement:
+ ==============
+ switch statement is  alternative of if-else-if to check multiple condition 
+
+ syntax:
+ ======
+
+ switch(expression){
+
+ case value1: //code to executed;
+                         break;
+
+ case value2 ://code to executed;
+                     break:
+   ---
+
+ default  : //code to executed;
+ }
+
+
+ Example:
+ ========
+
+  WAP to perfrom  Arithmetic operations (add,substract,mu...)
+  based  on switch case statements.
+
+  sol:
+  ===
+  public class ExampleOnSwitch{
+
+  public static void main(String args[]){
+
+  int a=10;
+  int b=5;
+
+  int exp=1;
+
+  switch(exp){
+
+  case 1: int z=a+b;
+             System.out.println("sum of two numbers is "+z);
+             break;
+
+  case 2 :int s=a-b;
+             System.out.println("substraction of two number is "+s);
+             break;
+
+  default :  System.out.println("Invalid operation");
+
+ }
+ }
+
+
+
+  Inheritance:
+  ============
+
+   Acquiring the properties and methods  from one class to
+   another class is called inheritance.
+     or
+   Acquiring the properties and methods from Parent Class(super class) to 
+   Child Class(subclass) is called inheritance.
+
+   the main advantage of inheritance is code  reuseability.
+
+    By using extends keyword  we can get the properties and methods from 
+    parent class to child class.
+
+    Inheritance is  also called  as IS-A a relation.
+
+   note:
+   =====
+
+   --  It is recommended to create the object for child class
+    in inheritance concept.
+
+   --In java every class by default extends from Object class(java.lang).
+
+   -- Object is the super class for all the classes.
+
+
+  syntax:
+  =======
+
+  public  class Parent {
+
+   //data members;
+
+   //member methods;
+
+  }
+
+   public class Child extends Parent{
+    
+   //it acquires the datamembers and members methods from parent class
+
+  //and its child class data members and member methods.
+     
+   public static void main(String args){
+
+   Child c = new Child();
+
+   //using child object we can call parent class datamemebrs and members.
+
+  //using child object we can call it own data memeber and member methods.
+
+ }
+
+
+  Different types of inheritance:
+  ================================
+
+  1)single inheritance
+
+  2)multiple inheritance
+
+  3)multi-level inheritance
+
+ 
+
+   1) single inheritance:
+   ======================
+
+   it contain single parent and single child.
+
+   ex:
+   ----
+
+   public class A{
+    //variables and methods
+   }
+
+
+  public class B extends A{
+    //variables and methods
+   psvm(){
+
+  }
+ }
+
+
+2) multi-level inheritance class:
+==================================
+
+  A class extend from more than one class and one child
+
+ ex:
+ ===
+
+ there are three class A,B,C
+
+
+  public class A{
+
+    //variables and methods
+ }
+
+  public class B extends A{
+
+     //variables and methods
+ }
+
+  public class c extends B{
+ 
+          //variables and methods
+   public static void main(String args[]){
+
+ //to create the object for c class
+
+  }
+ }
+
+   Example On single inheritance:
+   ========================
+  single inheritance
+
+  a) parent class :-
+   1)create a class named  as First .
+
+   2) this class contain two intansce variables of type int
+
+    3) declare a  method named as getSum(int,int) and retrun type int
+    and access modifier is public
+
+   b) child class:-
+   1)create  a class named as Second which extends from First.
+
+   2) this class contain two instance variables of type float.
+
+   3)declare a method as getMessage(String) and Return type is 
+   String and access modifier is public
+
+   4) create object for  second class and display the
+   First class instance variables and second class
+   instance variables and call the methods of First and second class.
+
+sol:
+===
+
+public class First{
+
+  int num1=10;
+ int num2=20;
+
+   public int getSum(int x,int y){
+
+   int z = x+y;
+   return z;
+
+   }
+
+}
+
+public class Second extends First{
+
+            float  f1=10.0;
+            float f2=20.0;
+
+  public String getMessage(String s){
+ 
+    return "hello "+s+"welcome to java";
+   
+ }
+    
+public static void main(String args[]){
+
+     Second s = new Second();
+
+   System.out.println(s.num1);
+   System.out.println(s.num2);
+    
+   int res = s.getSum(40,40);
+   System.out.println("sum of salaries of two numbers is : "+res);
+
+     System.out.println(s.f1);
+     System.out.println(s.f2);
+      
+     String gt = s.getMessage("sainath");
+     System.out.println(gt);       
+           
+}
+}
+
+
+2) multi-level inheritance
+----------------------------
+Example-level inheritance
+====================
+a) create a class named as A and it contains one method 
+   method name is methodOne()(simple statement(sop) 
+   and retrun type is void .
+
+b)create a Class named B  which extends from A Class and it contains one method named as
+   methodTwo()--(sop) and return type is void.
+
+c) create a class named C  which extensd from B and it contains one method named as
+    methodThree() --(sop) and return type is void
+d)create a object for child class  C and call the methods
+  of A,B,C
+
+sol:
+----
+public class A {
+	
+	public void methodOne() {
+		System.out.println("we are in methodOne of A class");
+	}
+	
+}
+
+public class B extends A{
+
+	public void methodTwo() {
+		
+		System.out.println("we are in methoTwo of B class");
+		
+	}
+		
+}
+
+public class C extends B{
+
+	public void methodThree() {
+		
+		System.out.println("we are in methodC of C clas");
+		
+	}
+
+	public static void main(String[] args) {
+		
+		C cobj = new C();
+		
+		//calling the methods of B and A as well as C clasa
+		cobj.methodOne();
+		cobj.methodTwo();
+		cobj.methodThree();	
+		
+	}
+		
+}
+
+
+
+Has-A relation(or) Aggregation:
+===============================
+
+A class which contain object reference  or entity reference
+as a  variable is called aggregation or Has-a relation.
+
+Example:
+========
+
+There are two class student,Address and
+Student Has-A relation with Address.
+
+
+1)Address Class
+
+public class Address{
+
+  String city;
+  String  state;
+  String country;
+
+ public Address(){
+
+  this.city=null;
+  this.state=null;
+  this.country=null;  
+
+ }
+
+ public Address(String city,String state,String cn){
+
+  this.city=city;
+  this.state=state;
+  country=cn;
+
+ }
+}
+
+
+public class Student{
+
+  int sid;
+  String sname;
+  Address a; //represents student has-a relation with address
+
+  public Student(){
+   this.sid=0;
+   this.sname=null;
+   this.a=null;
+
+  }
+  
+  public Student(int sid,String sname,Address a){
+
+    this.sid=sid;
+    this.sname=sname;
+    this.a=a;
+
+  }
+
+
+   public static void main(String... args){ //var-arg--jdk1.5
+
+     Address a1 = new Address("hyd","telangana","india");
+     
+     Student s= new Student(1001,"Martin",a1);   
+
+     System.out.println("Student Details");
+     
+     System.out.println("Sid is :"+s.sid);
+     System.out.println("Stundent name is :"+s.sname);
+
+     System.out.println("city :"+s.a.city);
+     System.out.println("state "+s.a.state);
+     System.out.println("country :"+s.a.country);
+  
+  }
+
+
+}
+
+ Abstraction:
+ ============
+ abstraction is a process of hideing implementation details
+ and showing useful information to user is called abstraction.
+
+ The advantage of abstraction is secuirty.
+
+ we can acheive full abstraction in java 
+ using interfaces and abstract class
+
+ ex:
+ ===
+
+ ATM--withdrawal a money
+
+note:
+======
+we can declare the class as abstract but even it doesnot contain
+any abstract method to acheive security i.e, for that class
+it will not allow to create  object for the class directly.
+
+ex:
+====
+
+ public abstract class Ex1{
+
+ //instance methods
+ 
+ }
+
+
+ 
+
+ Interface:
+ ==========
+
+ --> An interface which contains set of abstract  methods.
+
+ -->Interface used for SRS(software requirement specification or abstract).
+
+ -->An interface contain variables and these variable must be static and final 
+
+   syntax:
+  =======
+
+  public interface InterfaceName{
+
+   //variables;
+
+   //abstract methods  //syntax: public abstract returntype methodName(arguments...);
+ 
+
+   }
+
+ -->once the interface is created who will provide the implementation,  
+    developer is responsible to provide implementaions for the interface
+
+ --> How to provide implementation
+
+    to provide implementations a class must implements the 
+    interface(using implements keyword) and provide the implementation for all the abstract method.
+
+  note:
+ =====
+
+  1)if we not provide implementation for any one abstract  method then
+  declare the class as abstract.
+
+  2)we can not create the object for abstract class directly.
+
+  3) to create the object for the abstract class,create one more
+  class which extends from abstract class  and provide
+  the implementation for the abstract method
+
+  4) create a object for new created class which extends from 
+   abstract class
+
+  5) call the data members and memeber methods of it own class
+   as well as abstract  class
+
+
+Example:
+========
+
+  1) create a interface  named as MyApp
+
+  2) this interface contain two abstracts methods
+     a)public abstract int getSum(int x,int y);
+    b)public abstract  int getAddition(int x,int y,int z);
+
+  3) create a class named as ExampleOnInterface   which implements
+    MyApp interface 
+   note:- provide implementation for all abstract methods.
+
+  4) create a Object for implementation class and call those methods.
+
+
+
+
+
+
+
+Sol:
+-----
+interface:
+=======
+
+public interface MyApp{
+
+  public abstract int getSum(int x,int y);
+   public abstract int getAdditions(int x,int y,int z);
+
+}
+
+Implementation Class
+=================
+
+public class ExampleOnInterface implements  MyApp{
+
+     public int getSum( int x,int y){
+      
+      int z=x+y;
+      
+      return z;   
+
+    }
+
+    public int getAddition(int x,int y,int z){
+   
+        return x+y+z;
+   }
+
+
+public static void main(String args[]){
+
+ExampleOnInterface eoi = new ExampleOnInterface();
+
+    int res =     eoi.getSum(40,50);
+    System.out.println("sum of two numbers is : "+res);
+   
+    int res1 = eoi.getAddition(30,40,30);
+    System.out.println("Sum of three numbers is :"+res1)
+   
+ //Interface Reference variable Holding its implementation class Object
+
+   MyApp   mp = new ExampleOnInterface();
+
+    int result = mp.getSum(50,50);
+
+    System.out.println("sum of two numbers is : using interface reference : "+result);
+          
+   int result2 = mp.getAddition(50,50,60);
+
+    System.out.println("sum of three numbers is : using interface reference : "+result2);
+
+}
+
+
+}
+
+
+
+
+
+Example:2
+=========
+  1) create a interface named as MyInterface
+
+  2) this Interface contain abstract methods 
+
+   a) int methodOne();
+    b) String methodTwo(String s);
+    c) void  methodThree();
+
+  3)create a class named as ExImp1 which implements the interface
+  MyInterface 
+  note:-  provide the implementation for two methods methodOne
+         and methodTwo.
+         Then declare the class as abstract
+
+  4)create a one more class named as ExImp2 extends from above class
+  ExImp1 abstract class and provide the implementation for abstract method
+   methodThree();
+  5) create a object for ExImp2 class and call the methods
+
+
+
+
+
+
+
+
+public interface MyInterface{
+
+       public abstract int methodOne();
+      public abstract  String methodTwo(String s);
+       public abstract void methodThree();
+}
+
+public class ExImp1 implements MyInterface{
+
+    public int methodOne(){
+    int a=10;
+   System.out.println("we are in method One");
+   return a;
+   }
+
+    public String methodTwo(String s){
+    
+     return "we are in methodTwo of ExImpl Class"
+    }
+
+
+}
+
+
+4)create a one more class named as ExImp2 extends from above class
+  ExImp1 and provide the implementation for abstract method
+   methodThree();
+5) create a object for ExImp2(two ways) class and call the methods
+   
+
+public class ExImp2 extends ExImp1{
+
+public void methodThree(){
+
+System.out.println("we are in method Three of ExImp2");
+
+}
+
+ public static void main(String args[]){
+
+    ExImp2 ex2 = new ExImp2();
+   
+    String wc = ex2.methodTwo("Welcome");
+   System.out.println(wc);
+   
+     ex2.methodThree();
+
+}
+
+
+
+
+}
+
+
+Example3:
+========
+a)
+public interface I1{
+
+     public abstract String getMessage();
+     void display();
+     
+}
+public interface I2 extends I1{
+
+   public abstract String getMessage();
+   void methodTwo();
+
+}
+
+b) create a class named as ExampleOnInterface2 which
+  will provide the implementation for I2(I2 interface inherits  the properties and
+                                                                  abstract methods from I1)
+
+sol:
+===
+
+public class  implements I2{
+
+   public String getMessage(){
+
+    return "welcome to java we are working on interface"
+   }
+
+   public void methodTwo(){
+   
+    System.out.println("we are in methodTwo");
+   }
+
+   public void display(){
+ 
+    System.out.println("we are in display method ");
+    }
+
+    public static void main(String args[]){
+
+      ExampleOnInterface2 ei2 = new ExampleOnInterface2();
+        
+        System.out.println(ei2.getMessage());
+      
+      ei2.methodTwo();
+      ei2.display();
+     
+
+   }
+
+}
+
+
+
+
+
+
+
+a)create a object for class in other ways:
+
+1)clone
+
+2)factorymethod
+
+b)Difference between Interface and abstract class
+
+C) what is marker interface ?
+
+e) Difference between abstract class and concrete class
+
+note:
+=====
+1)till jdk1.7 the interface contains only abstracts method
+   from jdk 1.8 the sun people added one functionality in interface
+   i.e, we can define instance methods inside interface
+    
+   and the defined methods inside interface must be default.
+
+2) based on above concept execute one example and copy inthe
+  document.
+
+
+note:
+=====
+suppose a interface doesnot contain any abstract methods(empty)
+then this type of interface called as marker interface or Tag interface
+
+ex:
+====
+
+interface MyEx{
+
+
+}
+
+Ex:
+===
+Serializbale --java.io packages
+
+
+  Encapsulation:
+  ==============  
+  Encapuslation is process of wrapping or binding the
+  data members(variables) and member methods functionalities as single unit .
+
+  ex:
+  ====
+  class
+
+  In real time javabean class is called as Encapsulation class.
+
+  what is javabean class ?
+ 
+  it a class which contain private access modifiers of instance variables
+  and based on that instance variable the class contains
+  setter methods and  getter methods...etc
+
+  note:
+  =====
+  In spring,Hibernate frameworks the java bean class will called as Pojo class
+  (plain old java object)
+
+  ex:
+  ===
+
+  public class Employee{
+
+  private int empid;
+  private  String empName;
+  private  float sal;
+
+  //setters and getters
+
+  public void setEmpId(int empid){
+
+   this.empid=empid;
+
+  }  
+  public void setEmpName(String empName){
+
+    this.empName=empName;
+  }  
+
+  public void setSal(float sal){
+
+    this.sal = sal;
+  }
+
+  public int getEmpId(){
+   
+    return  this.empid;
+ 
+   }
+
+  public String getEmpName(){
+
+     return this.empName;
+  }
+   public float getSal(){
+
+       return this.sal;
+   }
+
+
+}
+
+ note:
+ ======
+ In eclipseIDE we can generate getter and setter methods
+ in class rightclik-->source-->generate setters and getters-->selectall
+                                         -->finish.
+
+    method signature:
+    =================
+
+    syntax :-
+    ---------
+    methodname(datatype of variables);
+    
+    ex:
+    ===
+     public int getSum(int x,int y){
+
+     //logic t perform sum of two numbers
+
+     }
+
+    method signature:
+    ==================
+     getSum(int,int);
+
+ 
+   ex:
+   ---
+    public String getMessage(String msg);
+
+
+     methodSignature:
+     ----------------
+      getMessage(String)
+
+
+   Ex:
+    ---
+     public static void methodTwo(int x,float y,String s);
+
+     methodSignature:
+     ------------------
+      methodTwo(int,float,String)
+    
+
+
+
+
+
+
+
+   Polymorphism:
+   =============
+
+    polymorphism is means many forms.
+
+    A superclass Reference variable holding its subclass object
+    is called polymorphism.
+     
+     syntax:-SuperClassName  referenceName= new SubClassName();
+    
+    we can acheive polymorphism in java using method overloading
+     and method overrriding.
+
+   1)method overloading or compile time polymorphism or early binding:
+   ===================================================================
+
+   A class which contain one or more methods which consists of same methodname
+   and differ in arguments is called method overloading.
+
+   we can acheive method overloading with a class.
+
+   rules for methodloading:
+   ========================
+
+   1) different in no of arguments.
+   2)different in  type of arguments,
+ 
+   ex:
+   ====
+
+   1) create a class which contain multiple methods with same 
+   method name to perform sum.
+
+   sol:
+   ----
+
+    public class ExampleOnMethodOverload{
+
+    public  int getSum(int x,int y){
+
+      int z=x+y;
+      
+       return z;
+      
+    }
+
+     public int getSum(int x,int y,int z)
+     {
+         return x+y+z;
+     }
+   
+     public void  methodOne(int x,float y){
+      
+       System.out.println(x+" "+y);
+
+      }
+
+     public void methodOne(float x,int y){
+
+      System.out.println(x+" "+y);   
+    }
+ 
+    }
+
+
+
+
+
+  Automatic promotion types in method overloading:
+  ==========================================
+
+  if calling any method in method overloading ,compiler may not found the method based
+  on referenced type compiler will not throw any errror message
+  immediately,it will check for next level reference datatype based
+  on the any method available it will execute other wise
+  you will get error.
+
+
+  byte ->short->int->long->float->double
+
+   or 
+
+  char ->int->long->float->double
+
+
+ ex:
+ ===
+  public class ExampleOnTypePromotion {
+
+  public void methodOne(int a){
+    
+  System.out.println("int value of a is "+a);    
+     
+  }
+
+   public void methodOne(float a){
+    
+   System.out.println("float value of a "+a);    
+     
+   }
+
+   public void methodOne(double a){
+    
+   System.out.println("double value of a "+a);    
+     
+   }
+
+     public static void main(String args[]){
+       
+       ExampleTypePromotion ept =new ExampleTypePromotion();
+      
+      ept.methodOne(10); 
+      ept.methodOne(10.5);
+
+      ept.methodOne('a');
+
+    
+
+    }
+
+  }
+
+   note:
+   ======
+   compiler is responsible to perform or to execute the 
+   methods based on method signature  is called method resolution
+   (decision) ,the decision taken at compile time based on argument referenced type.
+
+
+  MethodOverriding or run time ploymorphism or late binding:
+  ===========================================================
+
+  A method is override from parent class to child class with
+  same method signature along with same arguments and 
+  same return type of parent class method.
+
+  using inheritance concept we can perform method overriding.
+
+  ex:
+  ===
+   public class ExampleOnOverride
+    {
+
+    public void methodOne(){
+        
+     System.out.println("we are in method one of ExampleOnoverride");
+
+    }
+   }
+
+   public class TestOnMethodOverride extends ExampleOnOverride
+   {
+      //methodOverride
+     @Override
+     public void methodOne(){
+
+     System.out.println("we are in methodOne of TestChild class");
+
+    }
+
+   public static void main(String args[]){
+
+    TestOnMethodOverride tmd = new TestOnMethodOverride();
+    
+     tmd.methodOne();    
+  
+     
+   }
+
+  }
+
+
+  note:
+  ======
+  In method overriding the method resolution(decision) will
+  take at run time based on Object reference type.
+
+
+  For A super class Reference variable Holding its sub class Object Execution:
+  ===========================================================
+  ExampleOnOverride tmd1 = new TestOnMethodOverride();
+    tmd1.methodOne();
+
+  1)first it will check the method reference in Super class  and based on
+   method signature if available it will  check same methodSignature in child class , 
+   if available  it will execute child class method.
+
+  2)If method signature not available in super class  and the same method signature 
+   savailable in child class ,it will not execute child class method it will throw an error.
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->parent class --  public
+
+		     ovveride
+
+-->child class --- protected  
+
+
+but jdk 1.5 we can change the access modifier as well as return type
+also in child class
+
+access modifieres :- default,protected,public
+------------------
+
+                   methods 
+ 
+parent classs ---  public    --protected     default
+
+chlid class   ---  public   ---public        protected/public
+
+
+
+
+returntype:
+============
+
+we can change the return type of a method while overriding
+but the changed return type should not be primitive datatype
+this concept is called as co-variant return type.
+
+in co-variant return it should be a object Reference.
+
+hierarchy:
+===========
+		return
+parent class    Object                Exception
+
+child class     String/StringBuffer    ClassNotFoudation/FileNotFoundException
+
+
+
+ex:
+===
+
+public class ExonCovtype{
+
+
+public Object methodOne(){
+
+System.out.println("we are in method oNe of String return type");
+
+return null;
+
+}
+
+}
+
+
+public class TestExcv extends ExonCovtype
+{
+
+public String methodOne(){
+
+
+System.out.println("we are in method oNe of String return type");
+
+
+return null;
+
+}
+
+  
+public static void main(String args[]){
+
+
+TestExcv  crt = new TestExcv();
+
+Object o = crt.methodOne();
+
+
+
+}
+
+
+}
+
+
+  Access Modifiers:
+  ==================
+  AccessModifiers are used to control(visible) the access of a class,
+  interface ,variable,method in package.
+
+   Access Modifiers are
+   ---------------------
+
+    1)Default -- 
+     Default access modifier we can  access with in the same package
+
+   2)private --private access modifier we access with in the class
+
+
+   3)protected -- the scope of protected variable and  methods 
+                  we can access with  same package and
+                   we can access outside the package but 
+                   it should be a child class.
+                
+   4)public ---  
+    public accesss modifier is a universal access modifier
+
+
+   Package:
+   ========
+   A package is a mechanism to group related classes and interfaces
+   as a single module .
+
+   note:
+   ======
+   package statement should be the firstline in java class.
+
+    
+   syntax:
+   =======
+   package packagename;
+   package  packagename.subpackagename;
+
+   ex:
+   ===
+
+   package com.ust;
+
+   public class Ex3{
+
+
+  }
+
+ Some of the predefined package available in java:
+ =======================================
+
+ 1)java.lang.*;    * - indicates all classes  and interfaces from the packages.
+ 2)java.util.* ;  --collections --- in jdk-->jre-->lib->rt.jar -
+ 3)java.sql.*;  -JDBC           --- oracle -- ojdbc.jar 
+ 4)java.io.*;  -- FILE I/0 Streams --in jdk-->jre-->lib->rt.jar 
+ 5)javax.servlet.http.*;-- Servlets --tomcat -- tomcat/lib/servlet-api.jar
+ 6)java.servlet.*;      - --Servlets tomcat -- tomcat/lib/servlet-api.jar
+  
+  we can use this packages in our user defined class using import statement
+  ex:
+  ===
+  import java.util.*;
+
+   
+  ex:
+  ===
+
+  1) create a class named as Welcome which display welcome message and 
+   create this class inside a package named as com.ust
+
+
+   to compile a class which availabe inside a package
+ ====================================================
+
+ syntax:
+ =======
+
+ javac  -d  pathtospecifyto store .class  classname.java
+
+ note
+ =====
+
+ -d -- destination
+
+pathtospecify to store .class --current directory(.) /C:\ /D:\
+
+
+to compile welcome.java
+========================
+cmd>  javac -d . Welcome.java
+
+
+
+to run a java class which is availabe inside a package
+=======================================================
+
+syntax:
+=======
+
+   java package.subpackage.classname
+
+ex:
+===
+
+   java com.ust.Welcome --fully qualified classname
+
+   or
+
+   java  com/ust/Welcome
+
+
+
+to  STORE THE .CLASS IN DIFFERENT DESTINATION:
+===============================================
+
+
+1)COMPILE THE PROGRAM BASED ON THE DESTINATION PATH
+
+  EX:
+  ====
+
+   javac -d c:\ Welcome.java
+
+
+2)to run the Welcome.java class first we need to 
+   set the classpath for the destination directory
+
+   ex:
+   ====
+
+  cmd]  set CLASSPATH=c:\;.;
+
+3) run the java class which availabe in Different Destination
+ 
+   Ex:
+   ====
+
+    java com.ibm.Welcome
+
+
+
+  Constructor:
+  ============
+
+  A constructor is used to initialize the object
+  
+  A constructor is special method whose name is same as
+   classname.
+
+  A constructor doesnt not return any value not even void also.
+  
+  note:
+  =====
+   Initialize the object means ,allocating memory for 
+   instance variables (heap)  and the instance variables
+   will store with it default values based on it types.
+
+  There are two types of Constructors 
+
+   1) default constructor:
+   =======================
+
+    a constructor is defined with out parameters with in class    
+
+
+   2) parameterized constructor:
+     ===========================
+
+      A constructor is defined with some parameters  with in class.
+
+   note:
+   =====
+   1)if class doesnt not contain any constructor,
+     compiler is responsible to provide default constructor in the 
+     .class  implicitly.
+
+   2)compiler will provider default constructor,
+   inside default the code available like this
+    
+   ex:
+   ===
+    compiled  welcome.class
+    public class Welcome{
+
+       public Welcome(){
+
+            super() 
+         }
+
+  }
+    
+  3) If explicity we need to use this() or super() 
+    inside a constructor,it should be first line statment inside
+    the constructor.
+
+   ex:
+   ----
+   
+   compiled class
+
+   public class Welcome{
+
+      public Welcome(){
+
+            this()/super() --it should be the first  statement
+           //other statements
+         }
+
+   }
+
+   
+   example:
+   ---------
+    1)create a class named as TestOnConstructor 
+    and create default and 
+     parameterized(int empno,String ename,float sal) constructors
+
+    2)create three instance variables of type empno -int
+       ename -String,sal -- float
+
+    3)create the object for TestOnConstructor class and display
+     empno,ename,sal fields.
+
+
+
+
+  note:
+   ----
+    1)output should be for default constructor --default values
+    2)output for parameterized constructor --user passed values 
+    3)differentiate between instances variables and local variables
+      using this keyword in constructors
+
+       
+   this keyword:
+   =============
+   1) this is keyword which represents current class object or instance
+
+   2) using this keyword we can call instance methods and 
+     instance variable
+   3) using this() method we can call constructors.
+    note:- this should be a first line of statement in constructor
+   
+  example:
+  --------
+
+  public class ExampleOnThis{
+     
+      int a=10;
+      String s = "hello";
+ 
+
+       public ExampleOnThis(){
+
+      System.out.println("we are in default constructor");
+      System.out.println(a+ "  "+s);
+ 
+      }
+   
+     public ExampleOnThis(int x,String s){
+
+      System.out.println("we are in parameterized constructor");
+      }
+
+      public static void main(String args[]){}
+
+      ExampleOnThis eot = new ExampleOnThis();
+
+      }
+
+
+
+   final keyword:
+   ==============
+
+   we can use final keyword in three ways
+
+   1)We can a declare a final variable ,along with 
+   declaration we must initilaze that final variable
+   
+   2)final variable will act as constant i.e, value of final 
+   variable cannot be changed(fixed)
+
+   3)we can declare a method as final by using final keyword
+    note:-final method will not particpate in method overriding.
+
+  4)we can declare a class as final and we can create the object for final class but 
+   final class will not particate in inheritance.
+ 
+
+
+
+
+
+
+
+
+
+ super keyword:
+ ==============
+ ->super keyword is used to refer parent class object.
+
+ ->using super we can call super class variables(instances) and 
+   super class methods(instances)
+        
+ ->using super() method we can call super class constructors.
+  because in inheritance sub class cannot override the constructors.
+
+
+ to call a super class method:
+ ======================
+ super.methodname(); --we need to call in any instance methods of sub class
+
+ to call super class instance variable:
+ =============================
+ super.variableName  --we need to call in any instance variable of sub class
+
+ to callsuper class constructor:
+ ========================
+
+ super() ---it will call default constructor of super class by
+                  default without specifying.
+
+ super(any arguments) -- it will call parameterized constructor of super class
+                                              based on arguments type
+
+ note:
+ ====
+ 1)it will call default constructor of super class by default without specifying
+     in subclass default constructor.
+
+ 2)super() or super(any arguments ) --should be first line of statment 
+   in sub-class constructors.
+
+
+ Example:
+ ========
+
+ public class ExampleOnSuper
+ {
+
+
+ int a=10;
+
+ public  ExampleOnsuper(){
+
+   System.out.println("we are in default constructor of ExampleOnsuper");
+
+ }
+  public void display(){
+
+   System.out.println("we are in display method of ExampleOnsuper");
+
+  } 
+ 
+}
+
+
+ public class Test3 extends ExampleOnSuper{
+
+  int a=20;
+
+ public Test3(){
+
+ System.out.println("we are in default constructor of Test class");
+
+ }
+
+
+ public void display(){
+
+ System.out.println("we are in display method of test class");
+
+ }
+
+
+ public static void main(String args[]){
+
+   
+  Test t = new Test();
+
+  
+ }
+
+}
+
+
+
+
+ Operators:
+ =========
+
+ 1)Arithmatic operators:
+ ===================
+ this operators are used to perfrom calculations between two operands.
+
+ +   -- ADDITION
+ -     --SUBSTRACTION
+ *   --MULTIPLICATION
+ /    --DIVISION     --- IT WILL RETRUN QUOTIENT
+
+ %    -- MODULES  ---IT WILL RETURN REMAINDER
+
+
+ 2)Relational operators:
+ ==================
+
+  >    GREATER THAN
+  >=    GREATER THAN OR EQUALS TO
+  <     LESSTHAN
+  <=     LESSTHAN OR EQUALS TO
+  !=     NOT EQUALS TO
+  ==    EQUALS TO 
+
+ 3)Logical operators:
+ ================
+  &&  --- logical and
+  ||      --logical or
+  ^      --logical XOR
+  !     --- logical Not
+
+4)Increment and Decrement operators
+  
+   ++,--,+=,-=,%=
+
+ Example:
+ =======
+
+ 1)WAP  to perform addition,substraction,division,modules.
+  and display sum of numbers,sub of numbers or.......
+
+
+
+
+
+  Conditional operator:
+  =================
+  this operator is used to make Conditional Expressions.
+
+  syntax:
+  ======
+  Datatype variableName =Expression1?Expression2:Expression3;
+
+   if Expression1 condition is matched it will return expression2
+.
+   if Expression 1 condition is not matched it will retrun Express3
+
+
+
+  Ex:
+  ===
+
+  int a=10;
+  int b=20;
+
+  int value1=(a<b)?a:b;
+
+  int value2=(a>b)?a:b;
+
+
+
+
+
+ Conditional Statements:
+ ======================
+  1)if
+  ===
+
+  syntax:
+  =======
+  if(condition){
+  
+  //true statments;
+  }
+
+  note:
+  =====
+  In if condition it contains only one statement braces
+  are optional but this statment should not be initilization statement.
+
+
+
+  Example:
+  =======
+  1)WAp to compare two int variables and print which is greater.
+   using if-else condition.
+
+
+  if-else
+  ======
+    syntax:
+    ======
+    if(condition){
+   
+      //true statments   
+    
+    }else{
+ 
+      //else /false statements
+     }
+
+
+
+
+
+  if-else-if:
+  ===========
+  to check multiple conditions
+
+  syntax:
+  ======
+
+  if(condition1){
+
+  //statements
+  
+   }else if(condition2){
+   //statements
+ 
+   }else{
+       //statements
+   }
+
+  ex:
+   ===
+    WAp to compare three int variables and print which is greater.
+    using if-else-if condition and logical operators (&& or ||).
+
+
+
+  switch-case:
+  ===========
+   to check multiple condition based on expression
+
+    syntax:
+    =======
+    switch(expresssion){
+
+       case  cond1 : statements;
+                       break;
+       case  cond2 : statements;
+                        break;
+        case cond3 : statements;
+                       break;
+        case cond4 : statements;
+                       break; 
+        default : statement;
+    }
+
+    Example 
+    ++++++++
+    wAp to perform arthematic operations using switch case expresssion .
+    
+
+
+   Iterative statments:
+   =====================
+
+   While loop:
+   ===========
+   to repeat the statements until the condition become true.
+
+   syntax:
+   =======
+
+   initialize a variable;
+
+    while(condition)
+    {
+    //statements;
+
+    //increment/decrement
+
+    }
+
+   ex:
+   ==
+  
+   write a program to display multiplication table of 2 using while loop;
+
+
+
+
+
+  sol:
+  ===
+
+   public class ExampleOnWhile{
+
+   public static void main(String args[]){
+
+   int i=1;
+    int n=2;
+
+   while(i<=10){
+
+   System.out.println(n+ " X " +i+" = "+(n*i));
+   i++;    //i=i+1; or //i+=1
+
+   }}
+  }
+
+ 2) WAP to print 1 to 10 integers using while loop.
+
+   sol:
+  ===
+
+   public class ExampleOnIntegers{
+
+   public static void main(String args[]){
+
+   int i=1;
+
+   while(i<=10){
+
+   System.out.println(i);
+  i++
+  }
+
+ }
+ }
+
+ for loop
+ ========
+
+ syntax:
+ =======
+
+  for(initilization;condition;increment/decrement){
+
+  //statements
+
+  }
+
+  ex:
+  ===
+  WAP to print 1 to 10 integers
+  WAP to display multiplication table of 5 using for loop;
+
+ sol:
+ ====
+ public class ExampleOnFor{
+ public static void main(String args[]){
+
+ int n=5;
+
+ for(int i=1;i<=10;i++){
+
+ System.out.println(n+" X "+i+" = "+(n*i));
+
+ }
+  }
+ }
+
+
+  do-while loop
+  =============
+  syntax:
+   =======
+	initilization variable;
+   do{
+
+   //statements;
+   //increment/decrement
+
+    }while(condition);
+
+  note:
+  =====
+  the statements will execute atleast one time before checking the condition.
+
+
+
+ Example:
+ =======
+  write a java program to print 1 to 10 integers using do-while loop.
+  WAP to print multiplication table of 4
+
+
+ 
+
+sol:
+   ===
+  public class ExampleOndoWhile{
+
+  public static void main(String args[]){
+
+     int i=1;
+   do{
+        System.out.println(i);
+     i++;
+    }while(i<=10);
+  }
+  
+
+
+Assigment:
+==========
+ 1)WAP to check given number is prime number or not.
+ 2)WAP to check given year is a leap year or not
+ 3)WAP to fibnoic series from 1 to 10
+
+ 
+
+
+ for -foreach loop ---from jdk 1.5 
+ ===================================
+
+ In JDK 1.5 introduced a new for loop known as 
+ foreach loop or enhanced for loop, 
+ which enables you to traverse the complete array or collection object sequentially 
+ without using an index variable.
+
+  syntax:
+  ========
+
+  for(type of array/collection variableName : Object of array/collection){
+
+ //statements;
+
+  }
+
+
+
+
+
+ switch statement:
+ ==============
+ switch statement is  alternative of if-else-if to check multiple condition 
+
+ syntax:
+ ======
+
+ switch(expression){
+
+ case value1: //code to executed;
+                         break;
+
+ case value2 ://code to executed;
+                     break:
+   ---
+
+ default  : //code to executed;
+ }
+
+
+ Example:
+ ========
+
+  WAP to perfrom  Arithmetic operations (add,substract,mu...)
+  based  on switch case statements.
+
+  sol:
+  ===
+  public class ExampleOnSwitch{
+
+  public static void main(String args[]){
+
+  int a=10;
+  int b=5;
+
+  int exp=1;
+
+  switch(exp){
+
+  case 1: int z=a+b;
+             System.out.println("sum of two numbers is "+z);
+             break;
+
+  case 2 :int s=a-b;
+             System.out.println("substraction of two number is "+s);
+             break;
+
+  default :  System.out.println("Invalid operation");
+
+ }
+ }
+
+
+}
+}
+
+ How to read the values from Keyboard using Scanner class(java.util.*)
+ =====================================================================
+
+ 1) we need to create the object for scanner class
+    ex:
+    ===
+    Scanner s = new Scanner(System.in);  //Specify the class information to compiler by using import keyword
+
+ 2) to read the values for respective variable data types 
+   we need to use respective methods(nextXXX()) from Scanner class by using scanner Object
+
+   ex:
+   ===
+   int a = s.nextInt();
+   float b = s.nextFloat();
+   long l = s.nextLong();
+    boolean b=s.nextBoolean();
+   char c= s.nextChar();
+   String  s = s.next();    ex:john
+                                   ex:-    john doe  -- it will read only  john
+    String  s =s.nextLine(); 
+                             line workds will read
+
+   Example:
+   =======
+   Write a java program to read  studentId,studentName,marks,comments from
+   keyboard or run time by using Scanner class
+
+
+
+
+
+
+
+sol:
+===
+
+  import java.util.Scanner;
+
+  public class ExampleOnScanner{
+
+  public static void  main(String args[]){
+
+   Scanner  s = new Scanner(System.in);
+
+   System.out.println("Enter the value for Student Id : ");
+  int studentId = s.nextInt();
+
+  System.out.println("Enter the value for Student Name " );
+  String studentName = s.next();
+  
+  System.out.println("Enter the value for StudentMarks");
+  float studentMarks=s.nextFloat();
+
+  System.out.println("Student Details are :");
+  System.out.println("stundentId is : "+studentId);
+  System.out.println("studentName is :  "+studentIName );
+  System.out.println("studentMarks is :  "+studentMarks );
+             
+}
+}
+
+
+ Example:
+ =======
+     WAP  to perform Arthimetic opertions
+          when user   Enter   1.add the two numbers
+                                2.substraction of two numbers
+                                3.multiplication
+                                4.division
+                                5.modules  
+                                 6.Exit         --  using scanner,switch,do-whileloop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Arrays:
+  =======
+
+  A array is used to store collection of similar types of element.
+
+  An array is used to store homogenous types of elements.
+
+   Array index start from 0
+
+   to Declare a single dimension Array:
+   ==============================
+   syntax:
+   =======
+  dataType  arrayName[]
+  Ex:
+  ====
+  int a[];
+
+  int[] a;
+
+  int []a;
+ 
+  to Declare and initilaize the size for array
+  -----------------------------------------------------------------===============
+  syntax:
+  =======
+
+  datatype arrayName[] = new datatype[size];
+
+   ex:
+   ---
+
+    int a[] = new int[5];
+
+  Example:
+  ========
+
+  WAP to create int array with declaration along  with initialization
+
+  sol:
+ ====
+  public class ExampleOnArray{
+ 
+   public static void main(String args[]){
+  
+    //declare and initializtion of array;
+
+      int a[] = {10,20,30,40,50};
+
+     System.out.println(a);
+   
+     System.out.println(a.length);//no of elements in array is  5
+
+    //using for loop
+      
+     for(int i=0;i<a.length;i++){
+
+         System.out.println(a[i]);
+
+      } 
+    //for each loop
+   
+      for(int b : a){ //here we are storing array object  a  into b
+
+      System.out.println("displaying the elements using for each loop "+b);    
+
+      }
+   }
+
+}
+
+Example:
+=======
+ 1)Create an int array and with size of five elements 
+  and initiliaze the array and display the elements from array
+
+ sol:
+ -----
+  public class ExampleOnArray2{
+
+  public static void main(String args[]){
+ 
+  int a[] = new int[5];  //declared the array with size using new operator 
+  //initilaze the array 
+  a[0]=10;
+  a[1]=40;
+  a[2]=50;
+  a[3]=60;
+  a[4]=30;
+
+  System.out.println("size of any arrray "+a.length);
+  //to display the elements using for loop
+
+   for(int i=0;i<a.length;i++){
+   System.out.print(a[i]+" ");
+   }
+
+  //display the elements using for-each loop
+   for(int b : a){
+
+   System.out.println(b);
+
+  }
+  }
+
+
+ Example:
+ =======
+
+ 1) WAP to create  an  int array which stores five elements(read the size from the keyboard) and
+   read the values using scanner  and initialize the array.
+   and display the elements from array using for loop and for-each loop
+
+
+ public class ExampleOnArray3{
+
+ public static void main (String args[]){
+  
+    int c[] = new int[5];
+
+   //initialize the array using for loop using keyboard  
+   Scanner s= new Scanner(System.in);
+          
+   for(int i=0;i<c.length;i++){
+
+     System.out.println("enter the value for C array");
+    c[i]=s.nextInt();
+
+   }
+     //to display the values from array c
+
+        for(int i=0;i<c.length;i++){
+	    System.out.println(c[i]);
+
+	   }
+
+   //foreach-loop
+	for(int i :c){
+  	 	System.out.print(i+" ");
+  	}
+  
+    }}
+
+
+
+two dimension array:
+=======================
+
+ syntax:
+ ========
+
+ datatype arrayName[][] = new datatype[size][size];
+			              rows  cols	
+ ex:
+ ===
+
+ 1) create an two dimension array of type int along with 
+   declaration and initialization .
+
+ sol:
+ =====
+
+ public class ExampleOnArray5{
+
+     public static void main(String args[]){
+
+       int a[][]={{1,2,3},{10,30,50}};  //        1    2    3
+                                           //     10  30  50     2 rows and  3 cols
+                                            //no of elements in array is  rows*cols
+     for(int i=0;i<2;i++){ //rows
+    
+         for(int j=0;j<3;j++){ //colums
+
+       System.out.print(a[i][j]+" ");
+     }
+       System.out.println("");
+    }
+ }
+ }
+
+olp:-
+1  2  3
+10 30 50
+
+
+Example:
+========
+ WAP program to declare two dimension array of type int 
+ with size(r=3,c=3) and insert the values into array using Scanner
+ and display the element using for loop
+
+sol:
+===
+  public class ExampleOnArray6 {
+
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+		
+	  int a[][] =new int[3][3];
+		
+	  //insert the values for array a[r][c]
+	  
+	  for(int i=0;i<3;i++) {
+		  for(int j=0;j<3;j++) {
+			  
+             System.out.println("Enter the elements for a[][]");
+			a[i][j]=s.nextInt();  
+		  }		  
+	  }	  
+	//     display the element using for loop
+		System.out.println("Elements are :");
+	  for(int i=0;i<3;i++){ //rows
+		  for(int j=0;j<3;j++){ //columns   
+  	       System.out.print(a[i][j]+" ");  
+	     }
+	       System.out.println("");
+	    }		
+	}
+   }
+
+ Example:
+ ========
+
+ WAP a pragrom to pass an int array as method argument and
+ display the elements from array 
+  sol:
+  ====
+
+ public class ExampleonArray7{
+
+  public void getEmpSal(int a[]) {
+		 
+		 //display the element from array a using for-each loop
+		 for(int b:a) {
+			 System.out.print(b);
+		 }		 
+	 }	
+	public static void main(String[] args) {
+		
+	ExampleOnArray4  eoa = new ExampleOnArray4();	
+	//declaring and initilazing int empSal[]
+	
+	int empSal[] = {3000,4000,5000,2000};
+	 
+	 eoa.getEmpSal(empSal);	
+				
+	}
+ }
+
+
+Example:
+========
+
+WAP to return an int array as method return type
+and display the elements from array
+===============================================
+
+sol:
+=====
+ public class ExampleOnArray9{
+
+   public int[]  methodOne(){
+
+    int a[]={10,30,40,50};
+  
+    return a;
+
+   }
+   public static void main(String args[]){
+ 
+     ExampleOnArray9 a9 = new ExampleOnArray9();
+
+      int res[] = a9.methodOne();
+
+    for(int b:res){
+
+       System.out.println(b);
+
+     }
+   }
+
+
+
