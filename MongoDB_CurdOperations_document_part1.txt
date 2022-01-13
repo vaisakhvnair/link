@@ -1,0 +1,225 @@
+After the Installation of Software :- 
+
+1) Create a Folder as c:\data\db
+
+set the path for mongodb:
+-------------------------
+
+copy path up to bin : C:\Program Files\MongoDB\Server\3.4\bin
+
+properties->advanced setttings->envrinoment variable->
+
+set path variable-> ;C:\Program Files\MongoDB\Server\3.4\bin
+
+ 
+To start a mongodb server:
+--------------------------
+ using command : mongod
+
+
+To start a mongo client:
+-------------------------
+
+using command : mongo
+
+
+To list all databases:
+=======================
+
+cmd : show dbs/databases
+
+To create a new databases:
+==========================
+
+cmd : use mydb
+
+
+note: if you list all databases, the newly created database will not visible,if the database contain alteast one document.
+
+
+to use database:
+================
+
+use mydb
+
+to check the current database - 
+
+db
+
+to list  all collections:
+-------------------------
+
+cmd : show collections
+
+CURD operations
+===============
+ 
+to create a document:
+---------------------
+
+syntax : db.<collection-name>.insert({})
+
+ex : db.emp.insert({empno:101,ename:'raju',sal:30000})
+
+
+to insert one record in document using json format:
+---------------------------------------------------
+
+syntax : db.<collection-name>.insertOne({})
+
+
+ex : db.emp.insertOne({empno:102,ename:'rahul',sal:20000})
+
+
+to  insert multiple records in document using json format :
+-----------------------------------------------------------
+
+syntax : db.<collection-name>.insertMany([{},{}])
+
+ex: db.emp.insertMany([{empno:103,ename:'ranjeeth',sal:15000},{empno:104,ename:'sravan',sal:35000}])
+
+
+to list data from a document:
+-----------------------------
+
+syntax : db.<collection-name>.find()
+
+ex : db.emp.find()
+
+
+relational operators:
+-----------------------
+
+$gt - greater than
+$gte - greater than equal to
+$lt - less than
+$lte - less than or equal to
+$ne - not equal to
+$eq - equalto
+
+
+to list data from a document with condition:
+---------------------------------------------
+
+db.emp.find({empno:{$gte:103}})
+
+
+$and & $or Logical Operators
+-----------------------------
+
+db.emp.find({$or : [{sal:15000},{sal:35000}]})
+
+db.emp.find({$and : [{sal:15000},{empno:103}]})
+
+to update  a record in document:
+--------------------------------
+
+syntax : db.<collection-name>.update({cond},{$set});
+
+
+usecase :
+---------
+update sal 20000 for employee name ranjeeth
+
+ex:
+---
+
+db.emp.update({ename:'ranjeeth'},{$set:{sal:20000}})
+
+note :
+------
+update method will update first occurance of the record,
+to update multiple records we need to use updateMany method
+
+to delete a record with conditional data:
+------------------------------------------
+
+syntax : db.<collection-name>.remove({})
+
+ex:db.emp.remove({empno:104})
+
+to delete all records :
+-----------------------
+
+syntax : db.<collection-name>.remove()
+
+ex:db.emp.remove()
+
+to list  all the records in sorted order:
+-----------------------------------------
+
+syntax : db.<collection-name>.find().sort({field:1})  -- in ascending order
+
+ex: db.emp.find().sort({empno:1})
+
+syntax : db.<collection-name>.find().sort({field:-1}) -- in descending order
+
+ex: db.emp.find().sort({empno:-1})
+
+to count no.of records in a document:
+-------------------------------------
+
+syntax : db.<collection-name>.find().count()
+
+ex : db.emp.find().count()
+
+
+to restrict the no of records to display:
+-----------------------------------------
+
+syntax : db.<collection-name>.find().limit(no of record to display)
+
+ex : db.emp.find().limit(4)
+
+
+to skip the records in a document:
+----------------------------------
+
+syntax : db.<collection-name>.find().skip(no of records to skip)
+
+ex: db.emp.find().skip(4)
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
