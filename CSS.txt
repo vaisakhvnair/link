@@ -1,0 +1,542 @@
+CSS:
+====
+
+Cascading Style Sheets
+
+
+css is used to make html document stylish.
+
+css selectors used to find  html element based on id,class and 
+Html element and other attributes
+
+css selectors
+=============
+syntax:
+------
+selector{
+
+proptery:value;property:value;
+
+}
+
+
+1)id:
+=====
+<h1 id="fh">Welocme to Css </h1>
+
+
+a)write the selector for id(#) 
+
+syntax:
+--------
+#idname{
+
+//styles;
+
+
+}
+
+b)id should be unique in the html document.
+
+
+
+2)class:
+========
+
+a) css selector for class(.):
+=============================
+
+syntax:
+=======
+
+.classname{
+
+//styles;
+
+}
+
+note:
+=====
+if we want to apply styles for specific class attribute
+
+syntax:
+=======
+
+tagname.classname
+
+ex:
+---
+
+h1.dc
+
+
+
+3)Html element :
+==================
+
+syntax:
+=======
+htmltag{
+
+//styles;
+
+}
+
+
+
+
+css selectors used to find  html element based on id,class and 
+Html element and other attributes
+
+
+1)In three we can apply css
+
+a)internal css:
+=================
+we can place this style tag in  side  Head tag with help of style tag.
+internal css is embedded in html documnent.
+
+syntax:
+-------
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+     
+          //style
+        </style>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+ex:
+====
+
+create a html document which contain <p> tag  apply
+css styles color using css selector as <p> .
+
+
+
+b)external css:
+=================
+
+1) create a any text file contain all your css styles.
+
+2)save the file with .css extension
+
+3)provide this .css file information in html document using <link> tag
+<link rel="stylesheet" type="text/css" href="location of the .css"> (in Header section (<head> <link/></head>
+
+syntax:
+-------
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="location of the .css">
+</head>
+</html>
+
+
+
+c)Inline css:
+==============
+
+if we want to apply styles for singletag then we use Inline css.
+
+using style attribute
+
+syntax:
+=======
+
+<tagname style="styles"></tagname>
+
+
+ex:
+===
+
+<h2 style="color:red">Welcome to Css using Inline Css</h2>
+
+comments:
+=========
+
+.css file
+-----------
+
+syntax:
+-------
+
+/* comments */ --internal and external css
+
+
+
+
+selectors:
+----------
+
+id(#)
+syntax:
+-------
+#idname{
+
+ property:value;
+}
+
+
+class(.)
+---------
+syntax:
+-------
+.className{
+
+ property:value;
+}
+
+universal selector(*):
+-----------------------
+syntax:
+-------
+*{
+
+ property:value;
+}
+
+attribute selector [attributename=""]
+=======================================
+
+syntax:
+-------
+input[type=""]{
+
+ property:value;
+}
+
+
+grouping seletor(,) (h1,h2,h3)
+================================
+
+syntax:
+-------
+h1,h3,p1{
+
+ property:value;
+}
+
+
+element selector(html tag)
+--------------------------
+syntax:
+-------
+tagName{
+
+ property:value;
+}
+
+ex:
+---
+p{
+
+}
+
+parent and child selector:
+==========================
+
+parenttagname childtagname{
+
+property:value;
+
+}
+
+Ex:
+--
+Create html named as ex4.html and apply css styles in external using selectors.
+
+sol:
+====
+abc.css
+-------
+
+#i1{
+	background-color:red;
+	color:green;
+	border:dashed;
+}
+
+
+/*class selector*/
+
+.c2{
+	background-color:green;
+	color:red;
+	border:solid 2px;
+}
+
+
+/*grouping selectors*/
+
+h4,h5,small{
+	background-color:blue;
+	color:yellow;
+	border:dotted;
+}
+
+/*element selector(tagName ) or html element*/
+
+p{
+	background-color:rgb(100,150,180);
+	color:#FFDD00;
+	border: solid 2px red;
+}
+
+
+/*attribute selecotr tagName[attrbute""] */
+
+input[type="text"]{
+
+	background-color:lightgrey;
+	color:red;
+	border-color:pink;
+}
+
+/* parent selector and child selector(space) */
+
+ul li{
+	background-color:pink;
+	color:red;
+	list-style:none; /* it will remove bullets */
+	display:inline;  /*  it will display the items inline */
+}
+
+
+ex4.html:
+---------
+<!DOCTYPE html>
+<html>
+<head>
+	<title>selector</title>
+
+	<link rel="stylesheet" type="text/css" href="abc.css">
+</head>
+<body>
+
+  <p id=i1>
+  	 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  	 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  	 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  	 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  	 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  	 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+  <h3 class="c2">
+  	welcome to css selectors
+  </h3>
+
+
+ <h4>we are using grouping tag --h4</h4>
+ <h5> we are in css grouping selector(,)</h5>
+ <small>we are in small tag</small>
+
+
+ <p>
+ 	we are in paragraph tag applying styles using element selector
+ </p>
+
+
+<form>
+<label>Attribute selector</label>
+<input type="text" name="t1">
+
+</form>
+
+<hr>
+<h3>Products</h3>
+<ul>
+	<li>Mouse</li>
+	<li>KeyBoard</li>
+	<li>Monitor</li>
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+Css Backgroud properties:
+==========================
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+background-size
+
+note:
+=====
+
+image:
+======
+by default the image is repeated vertically and horizontally
+
+repeated  horizontally
+-----------------------
+
+background-repeat : repeat-x
+
+repeated  veritcally
+-----------------------
+
+background-repeat : repeat-y
+
+no image repeated:
+==================
+
+background-repeat : no repeat
+
+
+shortend property:
+------------------
+
+background: color image repeat position attachment 
+
+background-size :width height
+
+
+
+2)CSS Border Properties:
+=========================
+
+The border-style property specifies what kind of border to display.
+
+The following values are allowed:
+
+dotted - Defines a dotted border
+dashed - Defines a dashed border
+solid - Defines a solid border
+double - Defines a double border
+groove - Defines a 3D grooved border. The effect depends on the border-color value
+ridge - Defines a 3D ridged border. The effect depends on the border-color value
+inset - Defines a 3D inset border. The effect depends on the border-color value
+outset - Defines a 3D outset border. The effect depends on the border-color value
+none - Defines no border
+hidden - Defines a hidden border
+
+
+3)Css Marign properties:
+==========================
+
+it will apply the space for tag 
+
+
+margin-top
+margin-right
+margin-bottom
+margin-left
+
+5)Css padding properties:
+=========================
+
+padding-top
+padding-right
+padding-bottom
+padding-left
+
+6)Css text properties:
+=======================
+
+
+text-align -- left/right/center
+
+text-decoration:underline/line-through/overline
+
+text-transformation:lowercase/uppercase/captialize
+
+note:
+=====
+captialize: display the  first letter start with capital.
+
+
+text-indent:- 50px 
+
+
+letter-spacing:- it will specify space between letters
+
+line-height -  it will specify height for the words
+
+text-direction -- to move text right to left , left to right
+
+word-spacing - it will specify the space between words.
+
+text-shadow - it will take three values horizontal,vertical and color
+                it will display the shadow of same text.
+
+
+Css Font Properties:
+====================
+font
+font-family --- Times New Romans
+font-style
+font-size
+font-variant
+font-weight
+font-size-adjust
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
