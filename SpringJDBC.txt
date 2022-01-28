@@ -1,0 +1,87 @@
+Spring JDBC
+===========
+ 
+Spring JDBC framework provides solutions to all the low-level details, 
+like open/close a connection, prepare and execute SQL statements, 
+process exceptions and handle transactions. 
+
+Thus, the only thing a developer must do is just define connection parameters and specify the SQL statement to be executed.
+
+Spring JDBC provides several approaches and different classes to form the basis for a JDBC database access. 
+The most popular approach makes use of JdbcTemplate class. 
+This is the central framework class that manages all the database communication and exception handling.
+
+
+
+JdbcTemplate Class
+The JdbcTemplate class executes SQL queries, update statements and stored procedure calls, 
+performs iteration over ResultSets and extraction of returned parameter values. 
+
+It handles the creation and release of resources, thus avoiding errors such as forgetting to close the connection. 
+It also catches JDBC exceptions and translates them to the generic, more informative, 
+exception hierarchy defined in the org.springframework.dao package.
+
+JdbcTemplate Class methods:
+===========================
+
+public  int update(String query)	   - is used to insert, update and delete records.
+public  int update(String query,Object... args)	 - 
+              is used to insert, update and delete records using PreparedStatement using given arguments.
+public  void execute(String query)	is used to execute DDL query.
+public  T execute(String sql, PreparedStatementCallback action)	-- 
+         executes the query by using PreparedStatement callback.
+public  T query(String sql, ResultSetExtractor rse) -is used to fetch records using ResultSetExtractor.
+public  List query(String sql, RowMapper rse)	is used to fetch records using RowMapper.
+
+Ex:
+===
+org.springframework.jdbc.datasource.DriverManagerDataSource
+The DriverManagerDataSource is used to contain the information about the database such as driver class name, 
+connnection URL,username and password.
+
+org.springframework.jdbc.core.JdbcTemplate
+There are a property named dataSource in the JdbcTemplate class of DriverManagerDataSource type. 
+So, we need to provide the reference of DriverManagerDataSource object in the JdbcTemplate class for the datasource property.
+
+driverClassName==>   com.mysql.cj.jdbc.Driver
+url  = =for mysql -->jdbc:mysql://localhost:3306/training
+username ==root
+password -==root
+
+
+To Work with springJDBC we need to Configure spring-jdbc dependency in POM.xml
+To connect to mysql we need to Configure mysql-connector dependency in pom.xml
+
+RowMapper:
+==========
+The org.springframework.jdbc.core.RowMapper<T> interface is used by JdbcTemplate for mapping rows
+ of a ResultSet on a per-row basis. 
+
+Implementations of this interface perform the actual work of mapping each row to a result object.
+SQLExceptions if any thrown will be caught and handled by the calling JdbcTemplate.
+
+
+Note:
+-----
+TO fetch the data from the database using select query
+a)queryForObject(single row)
+b)query(multiple rows)
+
+=>These methods will fetch the data from database table in ResultSet format(having rows) after 
+executing query
+
+=>The RestultSet data can be converted to objects format using RowMapper(i).
+
+=>RowMapper will not get data from database.it only convets ResultSet rows into Model ClassObject(bean)
+
+=>It is having MapRow() method which contains conversion logic(rows->Object)
+
+
+
+@PropertySource:
+================
+@PropertySource( “classpath:application.properties” ) annotation makes the properties 
+available from named property file[s] (referred by value attribute) to Spring Envirronment. 
+Environment interface provides getter methods to read the individual property in application.
+
+

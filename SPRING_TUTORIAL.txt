@@ -1,0 +1,555 @@
+Spring FrameWork:
+-----------------
+Spring is a open source,light weight, loosely coupled, aspect oriented & dependency injection based framework software 
+which can be used to develop any kind of java/j2ee application.
+
+Open Source: 
+-----------
+Spring software can be down loaded and used at free of cost. 
+Spring developed source code can referred by any one who is interested.
+
+org.spring.io to download  spring dist.
+
+Container:
+===========
+is a special software which can manage complete life cycle of a given resource.
+
+Loosely Coupled: 
+================
+Need not to inherit any class or interface as we do for our servlet programming. 
+Instead of having "is-a" relationship here we can have "has-a" relationship.
+
+Lightweight:
+============
+1. Spring is lightweight in terms of both size and overhead.
+2. The entire Spring framework can be distributed in a single JAR file that weighs in at just over 1 MB.
+3. Mainly spring is used for business logic. The same business logic if we try to develop using EJB, 
+   then its compulsory to have support of any application server like weblogic. 
+    But the same logic can be executed in Spring without help of any web server or application server. 
+    Because Spring provides its own containers in the form of pre defined classes.
+
+
+Spring Framework:
+=================
+Home : Interface21
+
+Author : spring framework rod johnson
+
+Objective : to simplify and accelerate application development
+             to cover each and every corner of the enterprise application.
+
+INitial version : 1.x 2004
+Used Version    :    3.x[2014]
+Latest Version :4.x[2017]
+                5.x[2018]
+Designed Platforms : J2se and J2EE --(java)
+
+Compatibility : Supported by almost all the Servers and IDEs[STS]
+
+
+Spring Modules:
+===============
+
+1)Core Container Module:
+=========================
+
+--> Fundamental /Foudnation Module in Spring
+
+--> Beans and Core  modules are providing Beans implementations
+    and it had implementation for BeanFactory Container
+    and it has IOC implementaions.
+
+--> Context module is responsible for providing implementaions
+    for ApplicationContext container and it will provide
+     services like I18N, Event Propagation.
+
+--> SpEL module will provide env to do manipulations with Object
+    Graphs at runtime.
+
+2.Aop/Aspects  :
+================
+--> it will decouple the services and business implementations
+inorder to provide loosly coupled design inorder to improve
+sharebility and reusability.
+
+Spring AOP module allows you to implement concerns or aspects in a Spring application in Spring AOP,
+the aspects are the regular Spring beans or regular classes annotated with @Aspect annotation. 
+These aspects help in transaction management and logging and failure monitoring of an application. 
+
+For example, transaction management is required in bank operations such as transferring an amount 
+from one account to another Spring AOP module provides a transaction management abstraction layer
+that can be applied to transaction APIs.
+
+
+3.Instrumentation:
+==================
+to do manipulation with bytecode with out having modifications on 
+source code.
+-->it will supply class loaders for the application servers
+which we want to use for our spring applications.
+
+4.Messaging/JMS Module:
+=======================
+-->JMS module will provide very good enviroment to 
+   integrate Jms middleware service to spring applications.
+
+-->Messaging Module is providing spring own messaging service
+able to perform actions as like JMS.
+
+5)DAO/JDBC Module:
+==================
+
+DAO Module has provided predefined library to simplify DAO
+implementations.
+-->Dao Module has provided a separate Exceptions Hierarchy
+inorder to handle exceptions in spring framework by having
+Exceptions Re-throwing mechanism,that is, by converting the
+underlying technologies provided checked exceptions to spring
+Unchecked Exceptions.
+
+6.ORM:(OBJECT -Relational Mapping)
+=====================================
+THis module will provide very good environment to integrate
+all ORM implementations to spring Applications.
+
+Hibernate,JPA,Open-JPA,Data-JPA,IBATIS,TopLink,....
+
+-->to simplify ORM implemenations integration part and their
+respective Database operations ORM module has provided some
+Template Classes.
+
+7.OXM Module[Object-xml Mapping]
+==================================
+THis module will provide very good environment to map XML elements
+with Java Objects and ViceVersa,for this,it will use no of
+xml implementations like JAX-B.....,,,
+
+8.Transactions:
+================
+This module will provide very good implementations internally
+inorder to simplify Transactions in database related applications.
+
+9)WEB/WEB-MVC:
+================
+Web module is providing very good env to integrate all the other
+web frameworks like struts,JSF,XWORK,..
+
+WEB-MVC:
+========
+is providing Spring specific mvc implementation
+
+10)Test Module:
+=============
+It will provide very good env to test spring by the developers
+by having JUNIT,..... kind of implementations.
+
+
+
+Spring Core(IOC)
+===========================================
+Inversion of Control (IoC):
+----------------------------
+The advantage of Spring instead of developer create the object and establish the dependencies, 
+the spring container create the object and establish the dependencies. 
+This process is called as Inversion of Control(IOC).
+
+If controlling of object is done by configuration files i.e. creating of object, 
+storing state of object (i.e. somewhat inverse of way), this is called Inversion of Control.(IOC).
+
+This IOC concept is base for every module of spring,IOC is core in case of spring.IOC is also called as Dependence Injection.
+
+Here we are achieving dependency injection depending on object whatever the data requires, 
+that will be injected through configuration file(xml)  or javaConfiguration class.
+
+IOC container provides objects bases on the configuration in xml files We are not creating object 
+by using new operator for an entity. We will get object from IOC container. 
+It goes to configuration file, based on that it generates object.
+
+IOC container generates objects and it is giving those objects to our programmer.
+
+IOC is maintains Singleton Object
+
+
+Dependency Injection (DI)
+==========================
+Dependency Injection is a process which takes place when IOC getting perform because 
+this reason we call Dependency Injection & IOC are same.
+
+The process of injecting(pushing) the dependencies into an object is known as Dependency Injection (DI)
+
+Spring Container:
+=================
+
+Core container or IOC container or BeanFactroy container
+---------------------------------------------------------
+1. Its an implementation class of an interface BeanFactory
+2. It supports lazy loading.
+    It means container will not create objects of configured pojo classes immediately.
+    It waits till it receives the first request.
+    Once the object is created the same object will be maintained till end of the application.
+
+3. By default it considers all the configured classes as singleton classes.
+4. So that the same object will be given to all requests which belongs to same class.
+5. We cannot change singleton scope for core container.
+6. provides the fundamental functionality of the Spring framework.
+7. BeanFactory, the heart of any Spring-based application.
+
+
+Advanced container or ApplicationContext container
+--------------------------------------------------
+1. It is advanced container.
+2. By default it supports early loading.
+     ▪ It means without receiving any request from client program immediately it will create object for every singleton scoped class.
+     ▪ When ever the container gets activated immediately it creates objects of all singleton classes.
+3. Has many advantages over core container. ApplicationContext container is enhancement
+
+Its features are as follows:
+1. Pre initialization of beans by default. [Early loading].  
+    It means in our spring configuration file we may have any no. of bean tags. 
+       Objects will be created sequentially for each and every bean class as specified in the sequence of <bean> tags in xml file.
+2. Ability to read values of bean properties from properties file.
+3. supports Internationalization (I18n)
+4. Gives the ability to work with events & listeners.
+5. org.springframework.context.ApplicationContext interface is the sub interface of
+    org.springframework.beans.factory.BeanFactory interface.
+6. Activating application context interface is nothing but creating object of a class 
+     that implements org.springframework.context.ApplicationContext interface.
+7. There are three regularly used implementation classes of application context interface. 
+	By creating object for any of these three classes we can activate ApplicationContext container.
+8. This container is available in JEE module.
+9. org.springframework.context.support.FileSystemXmlApplicationContext: It activates application context 
+   container by locating given spring configuration file in the specified path.
+
+Ex: 
+10. FileSystemXmlApplicationContext ctx = new 11. FileSystemXmlApplicationContext("c:\f1\spriong.cfg.xml")
+
+12. org.springframework.context.support.ClassPathXmlApplicationContext: 
+    It activates application context container by locating spring configuration file in the same working directory 
+     or from jar files added in the classpath. 
+Ex: 
+13. ClassPathXmlApplicationContext ctx = new 14. ClassPathXmlApplicationContext("spring.cfg.xml");
+
+15. org.springframework.context.support.XmlWebApplicationContext: 
+    this class activates application context container by locating spring configuration file in deployment directory 
+     structure of web application by default in WEB-INF folder. 
+Ex: 
+16. XmlWebApplicationContext ctx = new XmlWebApplicationContext("spring.cfg.xml");
+
+18. In real time applications we can find regularly working with Application Context container 
+     rather than working with Bean Factory container.
+19. Application context container can perform all modes of
+    dependency injection like bean factory container.
+20. Application context container performs pre instantiation on all singleton scoped 
+    on spring bean classes of spring configuration file at the moment of application context container gets activated.
+21. Pre-instantiation means creating spring bean class objects immediately after the application context container activation.
+22. BeanFactory cannot perform this pre instantiation on spring bean classes.
+23. when we call factory.getBean(_) then bean factory container immediately 
+     creates the object and uses the same for further requests on same id-value.
+24. When we call ctx.getBean(_) then application context container gives access to bean id 
+     related spring bean class object which is created at pre-instantiation process.
+25. Application context container can perform pre-instantiation only on singleton scoped spring bean classes 
+    that are configured in spring configuration file.
+26. If we give scope value as prototype then object will not be created for bean at the time of pre-instantiation.
+27. If the object is not created at pre-instantiation then it will be created after receiving 
+    the call along with its dependent objects.
+28. If singleton scope bean class property has prototype scoped bean class object as 
+    dependent value then the application context container also creates prototype scoped 
+    spring bean class object during pre instantiation process along with singleton scope bean class object.
+29. It happens to satisfy dependency injection needs done on singleton scope bean class properties.
+
+
+Types of Dependency Injection :
+-------------------------------
+We have 2 types of dependency injection options
+1. Constructor Injection:
+   Injecting the dependencies of an object through its constructor arguments
+   If the constructor is establishing the dependencies between objects, we call it as Constructor Injection.
+2. Setter Method Injection
+   If the setter method is establishing the dependencies between objects, we call it as Setter Method Injection
+
+Steps to prepare First Spring Applications:
+===========================================
+
+1.Download Spring Framework from internet
+
+2.Create maven Java Project in Eclipse IDE and Provide Spring Setup.
+
+3. Create Bean Component
+
+4. Create Beans Configuration File
+
+5. Create Test Application  
+
+6. Execute Test Application.
+
+
+Note:
+====
+1)By Default when you create maven project by default it will use jdk 1.5
+to change java compiler version we need to configure two tags in pom.xml file inside properties tag
+
+<properties>
+	<maven.compiler.source>1.8<maven.compiler.source>
+ <maven.compiler.target>1.8<maven.compiler.target>
+<properties>
+   
+ a) update the project by select project rightclick -->choose-->maven-->update project.
+
+
+
+2)For core module you need to add dependency in pom.xml
+========================================================
+
+spring-core:
+============
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+
+spring-context
+==============
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-content</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+2) we need to specify the business compoenent class information in filename.xml with the help of bean tag
+   along with attributes like id, class.
+
+  Ex:
+   spring.xml //inside src/main/resources folder
+
+  <beans>
+         <bean id="" class=""></bean>
+ 
+   <beans>
+   
+Ex:
+===
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="hw" class="com.training.HelloWorld"></bean>
+
+</beans>
+
+3)Test Class:
+===============
+public class Test {
+
+	
+	public static void main(String[] args) {
+		
+		
+	ApplicationContext context=	new ClassPathXmlApplicationContext("spring.xml");
+	
+	
+	//once object is created ,to get the that object we need to use getBean("");
+	//Object getBean();
+	
+	      HelloWorld hwObj= (HelloWorld)context.getBean("hw");
+	      
+	      //HelloWorld hwobj = context.getBean(HelloWorld.class)
+	      
+	      hwObj.sayHello();
+	
+		
+}
+   
+
+
+
+
+
+
+
+
+
+
+Constrcutor injection
+=======================
+
+▪ The spring container find the constructors based on number of parameters.
+▪ When we configure constructor injection, we know need to supply index attribute, 
+  if we doesn't supply index attribute by default the tag is considered as parameter zero, 
+  2nd tag is considered as parameter index '1' etc.,
+▪ If we don't specify type default spring uses the data types of spring bean.
+▪ Even though index and type attributes are optional its always recommended to use index and type attributes.
+▪ These resolve the conflict of overloaded constructors instead of using index attribute
+   we can use name attribute to specify to which variable we are supplying the value.
+▪ When ever mandatory properties are available , when the object is created we have to initialize them,
+  in this scenario we use constructor injection.
+Eg:
+===
+<constructor-arg name="" type="" value=""/>
+
+<constructor-arg type="" index="" Value=""/>
+
+
+Setter Injection:
+==================
+Based on the user choice we want to initialize the properties in this scenario we use setter method injection.
+<property name="" type="" value="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SPRING
+
+CORE\IOC(INVERSION OF CONTROL)
+
+IT MEANS THAT YOU DONT CREATE OBJECTS.
+
+OBJECTS SHALL BE CONFIGURED IN AN XML FILE BY THE DEVELOPER.
+
+SPRING CONTAINER ->
+
+RESPONSIBLE TO CONSTRUCT THE JAVA OBJECTS BY PARSING  XML FILE.
+
+IOC Container Features:
+=======================
+1)Creating the Objects
+2)Managing their Complete life Cycle
+3)Writing them together
+4)Configuring
+
+Note:
+======
+
+The Spring IOC COntainer by using java pojo classes and 
+configuration metadata produces a fully Configured and
+executable system or application.
+
+TYpes of Container:
+===================
+Bean Factory:
+=============
+org.springframework.beans.factory.BeanFactory is the
+simplest container providing the basic support for Dependency Injection.
+
+
+APplicationContext 
+==================
+
+org.springframework.context.ApplicationContext is built
+on top of the BeanFactory interface. 
+
+This Container adds more enterprise-specific functionality.
+
+
+Bean Object:
+============
+1)Bean are the Objects that form the backbone of our application
+and are managed by the spring Ioc Container
+
+2)Spring IoC Container instantiates,assembles and manages the bean Object
+
+3)The Configuration metadata that are supplied to the container are used
+to create BEANS Object.
+
+Bean Life Cycle:
+================
+-->Instantiate--->
+	|
+	|
+populate Properties -->
+	|
+	|
+Call BeanNameAware's setBeanName()-->
+	|
+	|
+Call BeanFactoryAware's setBeanFactory()-->
+	|
+	|
+Call ApplicationContextAware's  setApplicationContext()-->
+	|
+	|
+Preinitialize(BeanPreProcessor)-->
+	|
+	|
+Call InitializingBean's afterPropertiesSet()-->
+	|
+	|
+Call custom-init()-->
+	|
+	|
+Post Initialization(BeanPostProcessr)-->
+	|
+	|
+Bean Is Ready To Use
+
+----------------------------------------------------------------------------
+
+Container is ShutDown
+	|
+	|------------>Call DisposableBean's destroy()--->Call custom-destory()--->Objects are destroyed
+
+
+Dependency Injection:
+=====================
+1)it is a design pattern which removes the dependency from the
+programming code,that makes the application easy to manage and test
+
+2)Dependency Injection makes our programming code loosely coupled,
+which means change in implementation doesn't  affects the user.
+
+
+Spring framework avails two ways to inject dependency:
+=======================================================
+By Constructor --> The <constructor-arg> subelement of <bean> is used for
+                         for Construtor injection
+By Setter method --> The <property> subelement of <bean> is used 
+                        for setter injection.
+           
+
+
+What is Wiring(autowiring) :
+==========================--
+▪ Connecting 2 different objects is called Wiring (OR) Establishing dependencies between the objects is called as Wiring(ref).
+▪ By default spring uses manual wiring the meaning of it is, if we doesn't specify the dependencies spring container
+  will not establish the dependencies. 
+
+auto-wire attribute :
+
+By default auto-wire attribute take values autowire="no"
+
+▪ byName
+▪ byType
+
+By default auto-wire="no" , the meaning of it is spring container is looking for manual wiring with the help of <ref/>.
+1)
+autowire="byName"
+in this case the spring container automatically establish the wiring/dependencies, if the property name and bean id are same.
+
+2)autowire="byType"
+in this case the spring container check is there any beans are configured with that data type ,
+if it is configured it will establish the dependency.
+
+3)autowire="constructor"
+
+usecase:
+========
+Requirement : Implement dependency between an address object and employee object
