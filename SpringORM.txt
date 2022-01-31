@@ -1,0 +1,355 @@
+Spring ORM
+===========
+
+The ORM package is related to the database access. It provides integration layers for popular object-relational mapping APIs, 
+including JDO, Hibernate and iBatis.
+
+
+Mapping Code Using JPA Annotation
+=================================
+Hibernate has been integrated with JPA for model class mapping with DB table. 
+All these annotation are provided in package.
+
+Javax.persistency(JPA)
+
+a. @Entity:
+This annotation must be applied over class. It maps class with table , variables with columns.
+
+b. @Id:
+It indicates primary key in table. Every table must have one primary key.
+
+c. @Table:
+It is used to provide table details. It is optional if not provided then class name is taken as table name.
+
+d. @Column:
+It is optional , used to provide column details if not provided then variable name is taken as column name.
+
+
+Hibernate Properties
+====================
+In general properties means data in key = value format hibernate application need 
+few key = value details to create SessionFactory object
+
+Those are listed below with possible value.
+
+1. Dialect:
+It is a class in hibernate which generate SQL when we perform any operation
+(Save / Update / delete /select…).
+
+All dialect are in package org.hibernate.dialectfew dialect classes are:
+OralceDialect ,MySQLDialect , SybaseDialect , DB2Dialect
+
+Ex: key = value
+hibernate.dialect = org.hibernate.dialect.OracleDialect
+
+2. Show_sql
+It is a Boolean property , default value : false. It will display SQL on console. If value is true.
+Ex: hibernate.show_sql = true
+
+3. Format_sql:
+It is a Boolean property , default false. It will display SQL query in clause by clause.
+Ex: hibernate.format_sql = true
+
+4. hbm2ddl.auto
+
+hbm = Hibernate Mapping
+DDL = create/ alter / drop /update
+
+This is optional key, ti is used to indicate about creating table (and DB component).
+
+Possible value are : 4
+
+a. validate:
+(default value) It indicates programmer should handle table creation and modifications . Hibernate does nothing here.
+
+b. Create:
+This option says , “every time new table is created by hibernate “. It table exist then it will be dropped and new table is created.
+
+c. Update:
+it creates new table if no table exist else uses same and does modifications if required.
+
+d. Create-drop:
+Hibernate create new table every time and drop after operation done
+Ex: hibernate.hbm2ddl.auto = create
+
+
+TransactionManagement in spring ORM:
+====================================
+Before performing any DB operation we should start (begin) Transaction (tx)
+
+=> If operation is successfully executed then commit (Save changes in DB) else rollback (Cancle changes in database).
+
+=> To do this tx management spring has provided API (for ORM) as:
+
+a. TX Management Classes.
+
+HibernateTransactionManager (org.springframework.orm.hibernate5)
+
+It does code execution like:
+
+try{
+begintx ….
+//operation
+Commit(if all done)
+}catch (Exception e){
+rollback…
+}
+
+b. Enable Tx: @EnableTransactionManagement(org.springframework.transaction.annotation)
+
+It will activate and de-activate txmanagement in spring application. It behaves like switch.
+
+c. Service method annotation.
+in service layer methods apply annotation like @Transactional for non-select operation and also for select operation.
+@Transactional (readOnly = true)
+
+
+HibernateTemplate[c] (org.springframework.orm.hibernate5)
+=========================================================
+This class is used to perfrom operation in one line code , 
+given example operations are save() , update() , delete() , get() and loadAll().
+
+1. save(obj):
+This method is used to convert model (entity / pojo) class object to database table row.
+EX: consider Employee(empId: int , empName :String , empSal : double)
+
+2. update(obj):
+This method updates all columns data based on primary key value in database table.
+Input is model class object and update row data column wise.
+
+3. delete(obj):
+This method takes one model class object having only primary key value (other values not required) based on primary key , 
+row will be deleted from DB table.
+
+FETCH RECORD
+=============
+4. get(T.class , ID) : T Object
+This method is used to fetch one row using select query to application. This row will be converted to model class object.
+Inputs T = Type = Model class name
+ID = primary key data.
+
+Syntax:
+========
+T obj = ht.get(T.class , ID);
+
+=>if given id based row not exist in DB table then get() method returns null value.
+
+5. loadAll(T.class): List<T>
+
+This method will fetch all rows in DB table converts to list of objects (model class objects)
+=> list size is equals to number of rows in table.
+=> If table has no rows then empty list will be returned.
+
+Here T = model class name
+
+Syntax:
+=======
+List<T>objs = ht.loadAll(T.class);
+
+Example
+========
+List<Employee>emps = ht.loadAll(Employee.class);
+
+
+
+Ex:
+===
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd 
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<context:annotation-config></context:annotation-config>
+
+	<context:component-scan base-package="com.ust"></context:component-scan>
+
+
+	<tx:annotation-driven />
+
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		name="dsObj">
+
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/ust"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+
+	</bean>
+
+	<bean
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		name="lsbObj">
+		<property name="dataSource" ref="dsObj" />
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.ust.model.User</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
+		name="htObj">
+		<property name="sessionFactory" ref="lsbObj" />
+	</bean>
+
+
+	<bean
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		name="transactionManager">
+		<property name="sessionFactory" ref="lsbObj" />
+	</bean>
+
+
+</beans>
+     
+ 
+
+Example:
+=======
+Create Maven Project named as demoOnSpringHibernate
+
+a)Required Depenedency for Spring ORm
+------------------------------------
+
+1)spring-core
+2)spring-context
+3)spring-orm
+4) hibernate-core
+5) mysql-connector
+
+
+b)Create ORM Mapping Between EMployee Pojo class and emp_tab table(Annotations).
+c)Configure DriverManager DataSource,LocalSessionFactotyBean ,HibernateTemplate,HibernateTransactionManger in spring.xml
+d) Create a dao layer to perform all curd operations using HibernateTemplate Object.
+
+
+
+JavaConfig:
+-----------
+package com.ust.config;
+
+import java.util.Properties;
+
+import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.ust.model.Employee;
+
+@Configuration
+@ComponentScan(basePackages = "com.ust")
+@EnableTransactionManagement
+public class JavaConfig {
+
+	@Bean
+	public DriverManagerDataSource dsObj() {
+		
+		DriverManagerDataSource ds= new DriverManagerDataSource();
+		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		ds.setUrl("jdbc:mysql://localhost:3306/ust");
+		ds.setUsername("root");
+		ds.setPassword("root");
+		
+		return ds;
+	}
+	
+	@Bean
+	public LocalSessionFactoryBean lsbObj() {
+		LocalSessionFactoryBean ls= new LocalSessionFactoryBean();
+		ls.setDataSource(dsObj());
+		ls.setHibernateProperties(props());
+		ls.setAnnotatedClasses(Employee.class);
+		
+		return ls;
+	}
+	
+	
+	public Properties props() {
+		
+		Properties p = new Properties();
+		
+		p.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
+		p.setProperty("hibernate.show_sql","true");
+		p.setProperty("hibernate.format_sql","true");
+		p.setProperty("hibernate.hbm2ddl.auto","update");
+		return p;
+		
+	}
+	
+	@Bean
+	public HibernateTemplate htobj() {
+		HibernateTemplate ht = new HibernateTemplate();
+		ht.setSessionFactory((SessionFactory) lsbObj());
+		
+		return ht;
+	}
+	
+	
+	@Bean
+	public HibernateTransactionManager tsobj() {
+		
+		HibernateTransactionManager htm = new HibernateTransactionManager();
+		htm.setSessionFactory((SessionFactory) lsbObj());
+		return htm;
+	}
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
