@@ -1,0 +1,321 @@
+Spring 5.x Rest Webservice :-
+-----------------------------
+Spring 5.x provides ReST Webservices implementation using spring ReST light weight Design, 
+which can be implemented in RAD model (Rapid Application Development) using Template Design Pattern.
+
+REST stands for REpresentational State Transfer. ... 
+REST is an architectural approach, not a protocol. 
+It does not define the standard message exchange format. 
+
+We can build REST services with both XML and JSON. 
+JSON is more popular format with REST.
+
+
+Spring ReST API contains classes, interfaces, anootations and enums (pre-defined).
+To implement Spring ReST Application we should create two projects.
+Those are :
+1. Spring ReST Provider Application
+2. Spring ReST Consumer Application
+Both communicates using Http Protocol
+(HttpRequest / HttpResponse).
+
+Ex:
+---
+Format of writing ReST Controller class :-
+package [packageName];
+
+@RestController
+@RequestMapping(“/url”) // optional
+public class [className] {
+// HttpMethod + URL
+@GetMapping(“/url”)
+public ResponseEntity<?> [methodName] () {
+// logic…
+return ResponseEntity(Body, HttpStatus);
+}
+
+}
+
+HttpStatusCodes           Description
+===============		==============
+1xx                        Inforamtion
+2xx			   success
+3xx                        redirect messages
+4xx                        ClientSide Error
+5xx                        ServerSide Error
+
+
+NOTE :-
+-------
+1. @RestController :- [Spring 4.x]
+   It is a 5th StereoType Annotation ie which detect the class and creates the object in Spring Container.
+   It must be applied on class level.
+   It internally follows @Controller and @RestController
+
+2. ResponseEntity<T> :-
+   It is a class provide by spring ReST API. It is used as method return type which should 
+   contain body (GenericType) and HttpStatus (enum).
+
+3. @RequestMapping :-
+   It is used to provide path(URL) at class / method level. class level it is optional.
+
+4. Method Level,
+   Path and HttpMethod Type can be provided using HttpType Annotations
+   using @XXXMapping,
+   Ex :- @GetMapping, @PostMapping … etc.
+
+
+
+
+Spring MVC REST Service :
+=========================
+Spring 4 @RestController annotation is introduced.
+And also we have @RequestBody, @ResponseBody, @ResponseEntity annotations 
+which are used to bind the HTTP request/response body with
+a domain object in method parameter or return type.
+
+@RequestBody:
+============
+If a method parameter is annotated with @RequestBody, 
+Spring will bind the incoming HTTP request body to the method parameter.
+While doing that, Spring will use HTTP Message converters to convert the HTTP request body into class object based 
+on Accept header present in request.
+
+1)The Accept header is used by HTTP clients [browsers] to tell the server what content types they will accept.
+2)The server sends back the response, which will include a Content-Type header telling the client what
+ the content type of the returned content actually is.
+ In case of POST or PUT request, browsers do send data in request, so they actually send content-type as well.
+
+@ResponseEntity:
+================
+It represents the entire HTTP response. Here we can specify status code, headers, and body.
+
+@ResponseBody:
+==============
+If a method is annotated with @ResponseBody, Spring will bind the return value to outgoing HTTP response body
+While doing that, Spring will use HTTP Message converters to convert the return value to HTTP response body,
+based on Content-Type present in request HTTP header
+
+Spring 4 MVC REST Controller Example
+=====================================
+The demo REST application will have Student resource. 
+This student resource can be accessed using standard GET, POST, PUT, DELETE http methods. 
+We will create below REST endpoints for this project
+
+REST_Endpoint 	HTTP_Method 	Description
+============= = ===========	============
+/students	 GET 		Returns the list of students
+/students/{id}   GET 		Returns student detail for given student {id}
+/students 	 POST 		Creates new student from the post data
+/students/{id}   PUT            Replace the details for given student  {id}
+/students/{id}   DELETE         Delete the student for given student {id}
+
+
+XML-Binding & JSON-Binding
+===========================
+a)JAVA <==> JSON
+Spring MVC need a JSON-Binding to convert Java object into JSON and vice versa. 
+And you can use Jackson (jackson-databind).
+
+<!-- MAVEN -->
+ <!--  https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+   <groupId>com.fasterxml.jackson.core</groupId>
+   <artifactId>jackson-databind</artifactId>
+   <version>2.9.4</version>
+</dependency>
+
+b)JAVA <==> XML:
+Spring MVC needs a XML-Binding to convert a Java object into XML, 
+in case you have two choices.
+Use Jackson: jackson-dataformat-xml
+Or use JAXB
+-
+JAXB (Java Architecture for XML Binding) - Is a library integrated into Java Standard Edition from version 1.6.
+jackson-dataformat-xml: Is a extended library of Jackson.
+
+<!-- jackson-dataformat-xml  -->
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+<dependency>
+    <groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-xml</artifactId>
+    <version>2.9.4</version>
+</dependency> 
+
+
+
+Example:
+========
+1)Create a project named as demoOnSpringRestFul
+2) Create a RestController(On top of the class must be @RestController)
+3) Create a HttpRequestedMethod(Get) which get which welcome to SpringRestFul Application.
+4) Configure a spring-webmvc dependency in pom.xml
+
+
+
+
+Ex:
+---
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/employee") // Optional
+publicclass EmployeeRestController {
+// Method
+
+// HttpMethod + Method URL
+@GetMapping("/show")
+public ResponseEntity<String> showMsgA(){
+
+String body = "Welcome To GET Method Spring Rest Appication!!";
+HttpStatus status = HttpStatus.OK;
+ResponseEntity<String> entity = new ResponseEntity<String>(body,status);
+return entity;
+
+}
+
+@PostMapping("/show")
+public ResponseEntity<String> showMsgB(){
+
+String body = "Welcome To POST Method Spring Rest Appication!!";
+HttpStatus status = HttpStatus.OK;
+ResponseEntity<String> entity = new ResponseEntity<String>(body,status);
+
+return entity;
+}
+
+@PutMapping("/show")
+public ResponseEntity<String> showMsgC(){
+String body = "Welcome To PUT Method Spring Rest Appication!!";
+HttpStatus status = HttpStatus.OK;
+ResponseEntity<String> entity = new ResponseEntity<String>(body,status);
+return entity;
+}
+
+@DeleteMapping("/show")
+public ResponseEntity<String> showMsgD(){
+String body = "Welcome To DELETE Method Spring Rest Appication!!";
+HttpStatus status = HttpStatus.OK;
+ResponseEntity<String> entity = new ResponseEntity<String>(body,status);
+return entity;
+}
+}
+
+
+# SPRING REST CONSUMER APPLICATION:-
+-------------------------------------
+1)Use RestTemplate to make HTTP Request calls to provider application from consumer application.
+
+2)Template is a Design Pattern used to reduce common lines of code (duplicate code/ boiler plate code...).
+
+RestTemplate takes care of :
+----------------------------
+>Creating client objects
+>web resources object
+> Default HTTP methods with Header
+> Making call to Provider
+> Auto conversion of response to ResponseEntity<T>
+
+
+Consumer Application:
+-----------------------
+publicclass ConsumerTest {
+
+publicstaticvoid main(String[] args) {
+//1.create object to RestTemplate
+ RestTemplate rt =new RestTemplate();
+//2.Provider URL
+String url="http://localhost:2022/Spring5RestProviderAppPart1/employee/show";
+//3.make call (http request)
+//4.get Response in ResponseEntity
+ResponseEntity<String> entity=rt.getForEntity(url, String.class);
+//5.Print or use result
+System.out.println(entity.getBody());
+System.out.println(entity.getStatusCode().name());
+System.out.println(entity.getStatusCodeValue());
+}
+}
+
+
+Curd Operations:
+----------------
+package com.ust.controller;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ust.model.Employee;
+import com.ust.service.IEmployeeService;
+
+@RestController
+@RequestMapping("/erc")
+public class EmployeeRestController {
+
+	@Autowired
+	IEmployeeService empServiceObj;
+	
+	@PostMapping("/add")
+	public String addEmployee(@RequestBody Employee emp) {
+	
+		int id= empServiceObj.save(emp);//storing record into emp_tab table
+	
+		return "employee Id "+id+" Record InsertedSuccessfully..!";
+		
+	}
+	
+	@PutMapping("/update")
+	public String updateEmployee(@RequestBody Employee emp) {
+		String msg=null;
+          Employee euobj=empServiceObj.getEmployeeById(emp.getEmpId());//Based on id record exists its will Employee Object or return null
+          if(euobj!=null) {
+        	  empServiceObj.update(emp);
+        	  msg= "Employee REcord "+euobj.getEmpId()+" updated Successfully ";
+          }else {
+        	  msg="Employee Record Based On Id Doesnot Exist";
+          }
+		
+          return msg;
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public String deleteEmployee(@PathVariable int id) {
+		String msg=null;
+          Employee euobj=empServiceObj.getEmployeeById(id);//Based on id record exists its will Employee Object or return null
+          if(euobj!=null) {
+        	  empServiceObj.delete(id);
+        	  msg= "Employee REcord "+euobj.getEmpId()+" Deleted Successfully ";
+          }else {
+        	  msg="Employee Record Based On Id Doesnot Exist";
+          }
+		
+          return msg;
+	}
+	
+	@GetMapping("/list")
+	public List<Employee> listAllEmployeeRecords(){ 
+		List<Employee> lieobj=empServiceObj.getAllEmployees();
+		return lieobj;
+	}
+	
+	
+	
+}
