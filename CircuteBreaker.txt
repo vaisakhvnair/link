@@ -1,0 +1,132 @@
+Fault Tolerance API:-- 
+----------------------
+If any Microservice is continuously throwing Exceptions, then logic must not be executed every time also must be finished with smooth termination. 
+ Such Process is called as Fault Tolerance. 
+
+=>Fault Tolerance is achieved using fallBackMethod and CircuitBreaker Library in distributed system. 
+=>Fallback or Circuit breakers are used to handle exception which is occurred in Producer Application. 
+ It avoid improper response and Shutdown termination of process.
+
+a. fallBackMethod: - If Microservice is throwing exception then service method execution is redirected to 
+                     another supportive method (fallBackMethod) which gives dummy output and “alerts to DashBoard” (to Dev, MS, Admin teams). 
+                     Writes to Log files, Email to admin etc.. is known as Fallback method, It makes termination of process in smooth manner.
+
+
+b. CircuitBreaker:- If Producer App (Service) is throwing exceptions continuously then circuit breaker stops executing Producer code and 
+                    Exception flow directly linked to fallback method. This is called as Opening a Circuit. 
+                    It means Avoid invalid process or incomplete process execution and return “Dummy Message”. 
+                    After some time gap (or) no.of request given to fallback, again re-checks once, still same continue to 
+                    fallBackMethod else execute Microservice (Producer).
+
+
+Circuit breaker
+------------------
+A service generally call another service for retrieving data or any other business needs and there is a chance that 
+downstream service may be down.On that time the requests will keep going to the down service. 
+
+Than defiantly user experience is bad and unpredictable, it can be effects all of other business services.
+
+To avoid this problem we can config one solution called Circuit breaker. Circuit breaker behave like electrical circuit breaker(tip switch).
+We can use resilience4j for configuring Circuit breaker.
+
+How resilience4j circuit breaker is works
+
+Circuit breaker will have 3 states
+----------------------------------
+Closed => When everything is normal circuit breaker is closed state
+
+Open=> the state of the circuit breaker changes from CLOSED to OPEN when the failure rate is above a threshold 
+       and circuit breaker never giving chance to hit specific service.   
+
+Half-closed => circuit breaker will check the underline problem is fixed or not and 
+               if still underline problem is not solved than again change the state from half-closed to closed state. 
+               If solved than change state to open state. 
+
+Fallback method
+---------------
+when the specific service is down then circuit breaker will call the fallback method. 
+so we can implement inside the fallback method what we need when the specific service is down .
+
+fallback method signature same as the service call method signature
+
+These attributes are the important part of an implementation of a Circuit Breaker. 
+We can configure the values as per our requirement and test the implemented functionality accordingly.
+
+
+1) ‘failure-rate-threshold=80‘ indicates that if 80% of requests are getting failed, open the circuit 
+   ie. Make the Circuit Breaker state as Open.
+
+2) ‘sliding-window-size=10‘ indicates that if 80% of requests out of 10 (it means 8) are failing, open the circuit.
+
+3) ‘sliding-window-type=COUNT_BASED‘ indicates that we are using COUNT_BASED sliding window. Another type is TIME_BASED.
+
+4) ‘minimum-number-of-calls=5‘ indicates that we need at least 5 calls to calculate the failure rate threshold.
+
+5) ‘automatic-transition-from-open-to-half-open-enabled=true‘ indicates that don’t switch directly from the open state to the closed state, 
+    consider the half-open state also.
+
+6) ‘permitted-number-of-calls-in-half-open-state=4‘ indicates that when on half-open state, consider sending 4 requests. 
+    If 80% of them are failing, switch circuit breaker to open state.
+
+7) ‘wait-duration-in-open-state=1s’ indicates the waiting time interval while switching from the open state to the closed state.
+
+
+
+Example:
+--------
+resilience4j.circuitbreaker.instances.getInvoiceCB.failure-rate-threshold=80
+resilience4j.circuitbreaker.instances.getInvoiceCB.sliding-window-size=10
+resilience4j.circuitbreaker.instances.getInvoiceCB.sliding-window-type=COUNT_BASED
+resilience4j.circuitbreaker.instances.getInvoiceCB.minimum-number-of-calls=5
+resilience4j.circuitbreaker.instances.getInvoiceCB.automatic-transition-from-open-to-half-open-enabled=true
+resilience4j.circuitbreaker.instances.getInvoiceCB.permitted-number-of-calls-in-half-open-state=4
+resilience4j.circuitbreaker.instances.getInvoiceCB.wait-duration-in-open-state=1s
+
+
+
+
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      movieService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s
+        slidingWindowType: COUNT_BASED
+
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+
+-------
+
+management.endpoints.web.exposure.include=*
+
+resilience4j.circuitbreaker.configs.shared.register-health-indicator=true
+resilience4j.circuitbreaker.configs.shared.sliding-window-type=count-based
+resilience4j.circuitbreaker.configs.shared.sliding-window-size=5
+resilience4j.circuitbreaker.configs.shared.failure-rate-threshold=40
+resilience4j.circuitbreaker.configs.shared.slow-call-rate-threshold=40
+resilience4j.circuitbreaker.configs.shared.permitted-number-of-calls-in-half-open-state=1
+resilience4j.circuitbreaker.configs.shared.max-wait-duration-in-half-open-state=10s
+resilience4j.circuitbreaker.configs.shared.wait-duration-in-open-state=10s
+resilience4j.circuitbreaker.configs.shared.writable-stack-trace-enabled=true
+resilience4j.circuitbreaker.configs.shared.automatic-transition-from-open-to-half-open-enabled=true
+
+resilience4j.circuitbreaker.instances.getInvoiceCB.base-config=shared
